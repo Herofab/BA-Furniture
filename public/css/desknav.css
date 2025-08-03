@@ -1,0 +1,73 @@
+
+  .wishlist-link {
+    position: relative;
+    display: inline-block;
+}
+
+.wishlist-count {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background-color: goldenrod;
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+}
+.iconCart-link {
+    position: relative;
+    display: inline-block;
+}
+
+.cart-count {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background-color: goldenrod;
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+}
+
+.suggestions-container {
+    display: none; /* Initially hide the suggestions container */
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    width: 350px;
+    z-index: 100;
+    overflow: auto;
+}
+
+.suggestion {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.suggestion img {
+    margin-right: 10px;
+    width: 50px;
+    height: 50px;
+}
+input[type="text"] {
+  padding-left: 5px; /* Adjust padding to accommodate the icon */
+}
+
+.news  .material-symbols-outlined {
+  position: absolute;
+  left: 5px; /* Adjust the position of the icon */
+  top: 50%;
+  transform: translateY(-50%);
+}
+

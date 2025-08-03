@@ -1,0 +1,352 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+
+}
+
+.item {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  
+  .item.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+      .discount-label {
+        position: absolute;
+        top: 1%;
+        right: -7%;
+        background-color: darkgoldenrod;
+        color: white;
+        z-index: 1;
+        rotate: 46deg;
+        overflow: hidden;
+        border-radius: 0px 0px 5px 5px;
+        padding: 11px 25px;
+        font-size: 14px;
+      }
+      .old_price {
+        font-size: 15pxx;
+        font-size: 15px;
+        font-weight: 600;
+        color: #3b3a3a;
+        line-height: 1.2;
+        position: relative;
+        text-decoration: line-through;
+  }
+  
+      .price {
+        font-size: 15px;
+        font-size: 15px;
+        font-weight: 600;
+        color: #000;
+        line-height: 1.2;
+      }
+      .salesmobie{
+        display: none;
+      }
+      @media only screen and (max-width: 1024px) {
+      .item{
+          width: 44% !important;
+      }
+  }
+      @media only screen and (max-width: 768px) {
+  
+        .item{
+          width: 45% !important;
+          margin: 5px 30px;
+          padding: 10px 10px 10px 10px;
+        }
+        .item img{
+          width: 150px;
+        }
+        .item h2 {
+      margin: 10px 0px 6px;
+      padding-bottom: 3px;
+    
+  }
+        .listProduct {
+            row-gap: 20px !important;
+        }
+        .group {
+          padding: 30px 0px !important;
+        }
+        .salesmobie{
+  text-align: center;
+  background-color: brown;
+  color: #fff;
+  padding: 5px;
+  display: block;
+  }
+      }
+      @media only screen and (max-width: 480px) {
+        .item{
+          width: 45% !important;
+          padding: 10px 10px 17px 10px !important;
+          border-radius: 12px !important;
+        }
+        .item h2 {
+      font-size: 13px !important;
+      margin: 13px 0px 5px !important;
+      padding-bottom: 2px !important;
+      
+  }
+  .item img{
+          width: 170px !important;
+        }
+        .discount-label {
+       
+        top: 2% !important;
+        right: -16% !important;
+   
+      }
+      }
+      @media only screen and (max-width: 300px) {
+       .item{
+        width: 38% !important;
+        border-radius: 10px !important;
+       }
+       .item img{
+        width: 80px !important;
+       }
+       
+        .item h2{
+        font-size: 8px !important;
+       }
+        .price{
+        font-size: 14px !important;
+       }
+  
+      }
+      .mendiver {
+      width: 100%;
+      background: url("https://images.puma.com/image/upload/q_auto,f_auto,w_1440/regional/%7Eregional%7ESEA%7Eothers%7EKOP%7E001-+Collection+banners%7E002-SS24%7EVelocity+Nitro+3+-+Psychedelic+Rush%7E24SS_Ecom_RUN_Velocity-Nitro-3_Q1_Full-Bleed-Hero_Large_Desk_1440x500px_Mens.jpg/fmt/jpg/fmt/png") !important;
+      background-size: cover !important;
+      background-repeat: no-repeat !important;
+      overflow: hidden;
+      margin: auto auto;
+      height: 80vh;
+  }
+  h5{
+    margin: 0px 0 !important;
+    font-weight: 700 !important;
+  }
+  @media only screen and (max-width: 1024px) {
+    .mendiver {
+    background: url("/images/mobilepuma.avif")  !important;
+    background-size: cover !important;
+      background-repeat: no-repeat !important;
+  }
+  }
+  @media only screen and (max-width: 767px) {
+    .mendiver {
+    background: url("/images/mobilepuma.avif")  !important;
+    background-size: cover !important;
+      background-repeat: no-repeat !important;
+  }
+  
+  }
+  @media only screen and (max-width: 480px) {
+    .mendiver {
+    background: url("/images/mobilepuma480.png") !important;
+    background-size: cover !important;
+      background-repeat: no-repeat !important;
+      background-position: center;
+  }
+  
+  }
+      .kidsdiver {
+      width: 100%;
+      background: url("https://images.puma.com/image/upload/q_auto,f_auto,w_1440/regional/%7Eregional%7ESEA%7Eothers%7EKOP%7E001-+Collection+banners%7E002-SS24%7E24SS_ECOM_SP_Trolls_Full-Bleed-Hero_Large_Desk_1440x500px_1.jpg/fmt/jpg/fmt/png") !important;
+      background-size: cover !important;
+      background-repeat: no-repeat !important;
+      overflow: hidden;
+      margin: auto auto;
+      height: 80vh;
+  }
+  
+  
+  @media only screen and (max-width: 1024px) {
+    .kidsdiver {
+    background: url("https://images.puma.com/image/upload/q_auto,f_auto,w_900/regional/%7Eregional%7ESEA%7Eothers%7EKOP%7E001-+Collection+banners%7E002-SS24%7E24SS_ECOM_SP_Trolls_Full-Bleed-Hero_Large_Tab-Mob_1536x1536px_1.jpg/fmt/jpg/fmt/png")  !important;
+    background-size: cover !important;
+      background-repeat: no-repeat !important;
+  }
+  }
+  @media only screen and (max-width: 767px) {
+    .kidsdiver {
+    background: url("https://images.puma.com/image/upload/q_auto,f_auto,w_543/regional/%7Eregional%7ESEA%7Eothers%7EKOP%7E001-+Collection+banners%7E002-SS24%7E24SS_ECOM_SP_Trolls_Full-Bleed-Hero_Large_Tab-Mob_1536x1536px_1.jpg/fmt/jpg/fmt/png")  !important;
+    background-size: cover !important;
+      background-repeat: no-repeat !important;
+  }
+  
+  }
+  @media only screen and (max-width: 480px) {
+    .kidsdiver {
+    background: url("https://images.puma.com/image/upload/q_auto,f_auto,w_543/regional/%7Eregional%7ESEA%7Eothers%7EKOP%7E001-+Collection+banners%7E002-SS24%7E24SS_ECOM_SP_Trolls_Full-Bleed-Hero_Large_Tab-Mob_1536x1536px_1.jpg/fmt/jpg/fmt/png") !important;
+    background-size: cover !important;
+      background-repeat: no-repeat !important;
+      background-position: center;
+    
+  }
+  .brand-slider-sec {
+      padding: 25px 0px 10px !important;
+  }
+  h5{
+    margin: 0px 0 !important;
+    font-weight: 700 !important;
+  }
+  
+  }
+  
+      .diver img{
+        object-fit: cover;
+        background-repeat: no-repeat;
+        height: 75vh;
+      }
+      .diver0{
+        width: 100%;
+        height: 70vh;
+        overflow: hidden;
+        margin: auto auto;
+      }
+      .diver0 img{
+        object-fit: cover;
+        background-repeat: no-repeat;
+      }
+      .diver1{
+        display: none;
+      }
+      @media only screen and (max-width: 480px) {
+      .diver1{
+        width: 90%;
+        height: 70vh;
+        overflow: hidden;
+        margin: auto auto;
+        display: block;
+      }
+      .diver{
+        width: 99%;
+        height: auto !important;
+        overflow: hidden;
+        margin: auto auto;
+      }
+      .skechdiver{
+        width: 99%;
+        height: auto;
+        overflow: hidden;
+        margin: auto auto;
+      }
+      .diver img{
+   
+        height: 40vh;
+      }
+      .product-cart-sec .container {
+      width: 100% !important;
+  }
+      .discount-label {
+      position: absolute;
+      top: 1%;
+      right: -19%;
+      background-color: darkgoldenrod;
+      color: white;
+      z-index: 1;
+      rotate: 46deg;
+      overflow: hidden;
+      border-radius: 0px 0px 5px 5px;
+      padding: 11px 25px;
+      font-size: 14px;
+  }
+      .diver0{
+        display: none;
+      }
+      .diver1 img{
+        object-fit: cover;
+        background-repeat: no-repeat;
+      }
+      .diver {
+      width: 100%;
+      height: auto;
+      overflow: hidden;
+      margin: auto auto;
+  }
+    }
+    .pumadiver {
+        width: 100%;
+        background: url("https://images.puma.com/image/upload/q_auto,f_auto,w_1440/regional/%7Eregional%7ESEA%7Eothers%7EKOP%7E001-+Collection+banners%7E002-SS24%7EVelocity+Nitro+3+-+Psychedelic+Rush%7E24SS_Ecom_RUN_Velocity-Nitro-3_Q1_Full-Bleed-Hero_Large_Desk_1440x500px_Mens.jpg/fmt/jpg/fmt/png") !important;
+        background-size: cover !important;
+        background-repeat: no-repeat !important;
+        overflow: hidden;
+        margin: auto auto;
+        height: 80vh;
+    }
+  
+  
+  @media only screen and (max-width: 1024px) {
+    .pumadiver {
+    background: url("/images/pumadiver.webp")  !important;
+    background-size: cover !important;
+      background-repeat: no-repeat !important;
+  }
+  }
+  @media only screen and (max-width: 767px) {
+    .pumadiver {
+    background: url("https://cdn.sanity.io/images/qa41whrn/staging/dc168fd6f5d9a135c03cd43d50bd1607a4f5d293-1536x1536.jpg?w=720&q=80&auto=format")  !important;
+    background-size: cover !important;
+      background-repeat: no-repeat !important;
+  }
+  
+  }
+  @media only screen and (max-width: 480px) {
+    .pumadiver {
+    background: url("/images/pumadiver.webp") !important;
+    background-size: cover !important;
+      background-repeat: no-repeat !important;
+      background-position: center;
+      height: 50vh !important;
+    
+  }
+  }
+
+    .womendiver {
+      width: 100%;
+      background: url("https://images.puma.com/image/upload/q_auto,f_auto,w_1440/regional/%7Eregional%7ESEA%7Eothers%7EKOP%7E001-+Collection+banners%7E002-SS24%7EYONA%7E24SS_Ecom_SP_SELECT_YONA_Full-Bleed-Hero_Large_Desk_1440x500px.jpg/fmt/jpg/fmt/png") !important;
+      background-repeat: no-repeat !important;
+      overflow: hidden;
+      margin: auto auto;
+      height: 105vh !important;
+      background-position: center;
+  }
+
+  
+  @media only screen and (max-width: 1024px) {
+    .womendiver {
+    background: url("https://images.puma.com/image/upload/q_auto,f_auto,w_900/regional/%7Eregional%7ESEA%7Eothers%7EKOP%7E001-+Collection+banners%7E002-SS24%7EYONA%7E24SS_Ecom_SP_SELECT_YONA_Full-Bleed-Hero_Large_Tab-Mob_1536x1536px.jpg/fmt/jpg/fmt/png")  !important;
+    background-size: cover !important;
+      background-repeat: no-repeat !important;
+  }
+  }
+  @media only screen and (max-width: 768px) {
+    .womendiver {
+    background: url("https://images.puma.com/image/upload/q_auto,f_auto,w_543/regional/%7Eregional%7ESEA%7Eothers%7EKOP%7E001-+Collection+banners%7E002-SS24%7EYONA%7E24SS_Ecom_SP_SELECT_YONA_Full-Bleed-Hero_Large_Tab-Mob_1536x1536px.jpg/fmt/jpg/fmt/png")  !important;
+    background-size: cover !important;
+      background-repeat: no-repeat !important;
+  }
+  
+  }
+  @media only screen and (max-width: 480px) {
+    .womendiver {
+    background: url("/images/womenmobile.avif") !important;
+    background-size: cover !important;
+      background-repeat: no-repeat !important;
+      background-position: center;
+      height: 50vh !important;
+    
+  }
+  }
+ 

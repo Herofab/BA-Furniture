@@ -1,0 +1,712 @@
+
+.wishlist-link {
+  position: relative;
+  display: inline-block;
+}
+
+.mob-wishlist-count {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  background-color: goldenrod;
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+}
+.iconCart-link {
+  position: relative;
+  display: inline-block;
+}
+
+.mob-cart-count {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  background-color:goldenrod;
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+}
+.navbar {
+  display: none;
+}
+@keyframes slideInFromLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOutToLeft {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
+.search-container {
+  display: none;
+}
+.grid-container {
+  display: none;
+}
+#closeFullscreenDiv {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    overflow: hidden;
+
+    background-color: #fff;
+    border: 1px solid #000;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    z-index: 9999;
+    justify-content: space-evenly;
+    transition: opacity 0.5s ease, visibility 0.5s ease; /* Smooth transition */
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .navbar.hidden {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .navbar > span {
+    font-size: 30px;
+  }
+
+  .navbar a {
+    float: none; /* Changed because float:left is not necessary with flex display */
+    display: block;
+    color: #000;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+
+  .navbar a:hover {
+    background: #f1f1f1;
+    color: black;
+  }
+  @keyframes slideUp {
+    0% {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideDown {
+    0% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+  }
+  #closeFullscreenDiv {
+    display: block;
+  }
+
+  .fullscreen-div {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: white;
+    z-index: 9999;
+    display: none; /* Initially hidden */
+    opacity: 0;
+  }
+
+  .fullscreen-div.show {
+    display: block;
+    animation: slideUp 0.5s forwards;
+  }
+
+  .fullscreen-div.hide {
+    animation: slideDown 0.5s forwards;
+  }
+  /* #closeFullscreenDiv {
+position: absolute;
+top: 10px; 
+right: 10px; 
+z-index: 10; #$
+background-color: transparent;
+color: white;
+border: none;
+font-size: 8px;
+} */
+  #closeFullscreenDiv {
+    position: absolute;
+    top: 20px;
+    right: 10px;
+    z-index: 10;
+    background-color: #0000;
+    color: #000;
+    border: none;
+    font-size: 10px;
+  }
+
+  /* Style for the content inside the full-screen div */
+  .fullscreen-div p {
+    margin: 15% auto; /* Position in the middle */
+    padding: 20px;
+    width: 80%;
+    color: white; /* Text color */
+  }
+
+  .search-container {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0; /* Reduced vertical padding */
+    background-color: rgba(255, 255, 255, 0.1); /* Slight transparency */
+  }
+
+  /* #fullscreenSearch {
+width: 50%; 
+padding: 8px 10px; 
+margin-right: 10px; 
+border-radius: 20px;
+outline: none;
+font-size: 14px;
+background-color: rgba(255, 255, 255, 0.9); 
+color: #333; 
+} */
+  #fullscreenSearch {
+    width: 80%;
+    padding: 5px 10px;
+    margin-right: 40px;
+    /* border: 2px solid #b31010; */
+    border-radius: 5px;
+    outline: none;
+    font-size: 14px;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #333;
+    /* position: absolute; */
+    left: 0;
+    border: 1px solid #000;
+  }
+
+  #searchButton {
+    padding: 8px 12px; /* Adjusted padding for compactness */
+    border: none;
+    border-radius: 20px;
+    background-color: #b31010; /* Example color */
+    color: white;
+    cursor: pointer;
+    font-size: 14px; /* Adjusted for icon size */
+  }
+
+  #searchButton span {
+    font-size: 20px; /* Smaller icon size */
+  }
+
+  #searchButton:hover {
+    background-color: #b31010; /* Darker shade for hover effect */
+  }
+
+  .grid-container {
+    display: flex;
+    flex-direction: column;
+    /* grid-template-columns: repeat(3, 1fr); */
+    gap: 10px; /* Space between grid items */
+    padding: 20px; /* Padding around the entire grid */
+    justify-items: center; /* Center items horizontally */
+    align-items: center; /* Center items vertically */
+  }
+
+  /* .grid-item {
+width: 100px; 
+height: 100px; 
+background-color: #b31010; 
+border-radius: 10px; 
+display: flex;
+justify-content: center; 
+align-items: center; 
+color: white; 
+font-size: 16px; 
+} */
+  .grid-item {
+    width: 180px;
+    /* height: 100px; */
+    background-color: #0e0d0dfa;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 16px;
+    margin: auto;
+    padding-block: 7px;
+  }
+
+  /* men content */
+  #menContent {
+    /* Ensure there's no 'display: none;' here initially */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0);
+    color: white;
+    padding: 20px;
+    border-radius: 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 99999;
+    opacity: 0; /* Start fully transparent */
+    /* No initial animation here */
+  }
+  #menContent.show {
+    display: block; /* Make it block to start the animation */
+    opacity: 1;
+    animation: slideInFromLeft 0.5s forwards;
+  }
+
+  #menContent.hide {
+    animation: slideOutToLeft 0.5s forwards;
+  }
+  /* brand content */
+  #brandContent {
+    /* Ensure there's no 'display: none;' here initially */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    background-color: rgba(0, 0, 0);
+    color: white;
+    padding: 20px;
+    border-radius: 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 99999;
+    opacity: 0; /* Start fully transparent */
+    /* No initial animation here */
+  }
+  #brandContent.show {
+    display: block; /* Make it block to start the animation */
+    opacity: 1;
+    animation: slideInFromLeft 0.5s forwards;
+  }
+
+  #brandContent.hide {
+    animation: slideOutToLeft 0.5s forwards;
+  }
+  /* women content */
+  #womenContent {
+    /* Ensure there's no 'display: none;' here initially */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0);
+    color: white;
+    padding: 20px;
+    border-radius: 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 99999;
+    opacity: 0; /* Start fully transparent */
+    /* No initial animation here */
+  }
+  #womenContent.show {
+    display: block; /* Make it block to start the animation */
+    opacity: 1;
+    animation: slideInFromLeft 0.5s forwards;
+  }
+
+  #womenContent.hide {
+    animation: slideOutToLeft 0.5s forwards;
+  }
+  /* kids content */
+  #kidsContent {
+    /* Ensure there's no 'display: none;' here initially */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0);
+    color: white;
+    padding: 20px;
+    border-radius: 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 99999;
+    opacity: 0; /* Start fully transparent */
+    /* No initial animation here */
+  }
+  #kidsContent.show {
+    display: block; /* Make it block to start the animation */
+    opacity: 1;
+    animation: slideInFromLeft 0.5s forwards;
+  }
+
+  #kidsContent.hide {
+    animation: slideOutToLeft 0.5s forwards;
+  }
+
+  .beautiful-div {
+    width: 100%;
+    padding: 5px;
+    margin: 10px 0; /* Spacing between divs */
+    background-color: #fff; /* Light background for contrast */
+    color: #333; /* Dark text for readability */
+    border-radius: 5px; /* Slightly rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    text-align: center; /* Center the text */
+  }
+  #mshoes {
+    width: 100%;
+    padding: 5px;
+    margin: 10px 0; /* Spacing between divs */
+    background-color: #fff; /* Light background for contrast */
+    color: #333; /* Dark text for readability */
+    border-radius: 5px; /* Slightly rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    text-align: center; /* Center the text */
+    font-weight: 700;
+  }
+
+  #closeMenContent {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  #closebrandContent {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  #closeWomenContent {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  #closeKidsContent {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+  }
+}
+
+.material-symbols-outlined {
+  font-size: 25px;
+}
+
+.hidden {
+  transform: translateY(-100%);
+  transition: transform 0.3s ease-in-out;
+}
+
+#menShoesContent {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 20px;
+  border-radius: 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 99999;
+  opacity: 0;
+  transform: translateX(100%);
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+#menShoesContent.show {
+  display: block;
+  opacity: 1;
+  transform: translateX(0);
+}
+
+#menShoesContent.hide {
+  transform: translateX(100%);
+  opacity: 0;
+}
+/* men Clothes */
+#menClothesContent {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 20px;
+  border-radius: 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 99999;
+  opacity: 0;
+  transform: translateX(100%);
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+#menClothesContent.show {
+  display: block;
+  opacity: 1;
+  transform: translateX(0);
+}
+
+#menClothesContent.hide {
+  transform: translateX(100%);
+  opacity: 0;
+}
+/* Accessory Clothes */
+#menAccessoryContent {
+  position: fixed;
+  top: 0;
+  right: 0;
+  overflow-y: scroll;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 20px;
+  border-radius: 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 99999;
+  opacity: 0;
+  transform: translateX(100%);
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+#menAccessoryContent.show {
+  display: block;
+  opacity: 1;
+  transform: translateX(0);
+}
+
+#menAccessoryContent.hide {
+  transform: translateX(100%);
+  opacity: 0;
+}
+/* women shoes */
+#womenShoesContent {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 20px;
+  border-radius: 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 99999;
+  opacity: 0;
+  transform: translateX(100%);
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+#womenShoesContent.show {
+  display: block;
+  opacity: 1;
+  transform: translateX(0);
+}
+
+#womenShoesContent.hide {
+  transform: translateX(100%);
+  opacity: 0;
+}
+/* women Clothes */
+#womenClothesContent {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 20px;
+  border-radius: 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 99999;
+  opacity: 0;
+  transform: translateX(100%);
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+#womenClothesContent.show {
+  display: block;
+  opacity: 1;
+  transform: translateX(0);
+}
+
+#womenClothesContent.hide {
+  transform: translateX(100%);
+  opacity: 0;
+}
+/* Accessory Clothes */
+#womenAccessoryContent {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 20px;
+  border-radius: 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 99999;
+  opacity: 0;
+  transform: translateX(100%);
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+#womenAccessoryContent.show {
+  display: block;
+  opacity: 1;
+  transform: translateX(0);
+}
+
+#womenAccessoryContent.hide {
+  transform: translateX(100%);
+  opacity: 0;
+}
+/* kids shoes */
+#kidsShoesContent {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 20px;
+  border-radius: 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 99999;
+  opacity: 0;
+  transform: translateX(100%);
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+#kidsShoesContent.show {
+  display: block;
+  opacity: 1;
+  transform: translateX(0);
+}
+
+#womenShoesContent.hide {
+  transform: translateX(100%);
+  opacity: 0;
+}
+/* women Clothes */
+#kidsClothesContent {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 20px;
+  border-radius: 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 99999;
+  opacity: 0;
+  transform: translateX(100%);
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+#kidsClothesContent.show {
+  display: block;
+  opacity: 1;
+  transform: translateX(0);
+}
+
+#kidsClothesContent.hide {
+  transform: translateX(100%);
+  opacity: 0;
+}
+/* Accessory Clothes */
+#kidsAccessoryContent {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 20px;
+  border-radius: 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 99999;
+  opacity: 0;
+  transform: translateX(100%);
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+#kidsAccessoryContent.show {
+  display: block;
+  opacity: 1;
+  transform: translateX(0);
+}
+
+#kidsAccessoryContent.hide {
+  transform: translateX(100%);
+  opacity: 0;
+}
