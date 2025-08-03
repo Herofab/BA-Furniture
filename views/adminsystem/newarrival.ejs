@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
+    <style>
+      /* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index:  1; /* Sit on top */
+  left:  0;
+  top:  0;
+  width:  100%; /* Full width */
+  height:  100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin:  5% auto; /*  15% from the top and centered */
+  padding:  20px;
+  border:  1px solid #888;
+  width:  80%; /* Could be more or less, depending on screen size */
+  height: 80%;
+  overflow-y: auto;
+}
+
+/* The Close Button */
+.close-modal {
+  color: #aaa;
+  float: right;
+  font-size:  28px;
+  font-weight: bold;
+}
+
+.close-modal:hover,
+.close-modal:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+.hoverr{
+  height: 50px;
+  width: 50px;
+  transition: all ease-in-out 0.1s;
+}
+.hoverr:hover{
+  width:200px;
+  height: 200px;
+}
+    </style>
+    <title>Admin</title>
+    <link rel="stylesheet" href="/css/dashboard.css">
+  </head>
+  <body>
+    <div class="container">
+      <aside>
+        <div class="top">
+          <div class="logo">
+            <img src="/images/faheemmainlogo.png" alt="" />
+            <h2>BA<span class="danger">Furniture</span></h2>
+          </div>
+          <div class="close" id="close-btn">
+            <span class="material-symbols-outlined"> close </span>
+          </div>
+        </div>
+        <div class="sidebar">
+          <a href="/adminsystem/dashboard" >
+            <span class="material-symbols-outlined"> dashboard </span>
+            <h3>DASHBOARD</h3>
+          </a>
+          <a href="/adminsystem/order">
+            <span class="material-symbols-outlined"> orders </span>
+            <h3>ORDERS</h3>
+          </a>
+          <a href="/adminsystem/sales">
+            <span class="material-symbols-outlined"> point_of_sale </span>
+            <h3>SALE</h3>
+          </a>
+          <a href="/adminsystem/newarrival" class="active">
+            <span class="material-symbols-outlined"> database </span>
+            <h3>NEW ARRIVAL</h3>
+          </a>
+          <a href="/adminsystem/additem">
+            <span class="material-symbols-outlined"> upload_file </span>
+            <h3>ADD NEW</h3>
+          </a>
+          <a href="/adminsystem/webtraffic">
+            <span class="material-symbols-outlined">
+              nest_doorbell_visitor
+              </span>
+            <h3>WEB TRAFFIC</h3>
+          </a>
+          <a href="/logout">
+            <span class="material-symbols-outlined"> logout </span>
+            <h3>Logout</h3>
+          </a>
+        </div>
+      </aside>
+      <main>
+        <h1>ALL NEW ARRIVALS</h1>
+        <div class="date">
+          <input type="date" />
+        </div>
+        <div class="insights">
+          <!-- =====================================start=================================================== -->
+          
+    
+          
+          <!-- =====================================end=================================================== -->
+        </div>
+        <div class="recent-orders">
+          <h2>Recent Updates</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th class="text-center" >Images</th>
+                <th class="text-center">Product Title</th>
+                <th class="text-center">Product SKU</th>
+                <th class="text-center">Product Price</th>
+                <th class="text-center">Delete panal</th>
+                <th class="text-center">Edit panal</th>
+                <th class="text-center">Detail</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% for(let i = 0; i < newarrivals.length; i++) { %>
+                <tr data-missing="<%= !newarrivals[i].imageExists || !newarrivals[i].productCodeExists %>">
+                  <td><%= i %></td>
+                  <td>
+                      <img class='hoverr' src="<%= newarrivals[i].image.replace('/public', '') %>" alt="Image">
+                  </td>
+                  <td data-label="Project Name">
+                      <div class="text-center">
+                          <p class="fw-bold mb-1"><%= newarrivals[i].title %></p>
+                      </div>
+                  </td>
+                  <td data-label="Project Locatiom" class="text-center"><%= newarrivals[i].product_code %></td>
+                  <td class="text-center" data-label="Status"><span ><%= newarrivals[i].price %></span></td>
+                  <td>
+                    <% if (user.role !== 'guest') { %>
+                      <form action="/delete/<%= newarrivals[i]._id %>" method="POST">
+                          <button style="background-color: transparent;color: red;border: none;" type="submit"><span class="material-symbols-outlined">
+                            delete
+                            </span></button>
+                      </form>
+                     
+    
+                  </td>
+                  <td>
+                      <a style="color: #4CAF50;" href="/adminsystem/editarrivaldata/<%= newarrivals[i]._id %>"  class="btn btn-primary"><span class="material-symbols-outlined">
+                        edit
+                        </span></a>
+                  </td>
+                  <td>
+                    <a style="color: #4CAF50;" href="#" id="btn-primary-<%= newarrivals[i]._id %>" class="btn btn-primary edit-btn" data-id="<%= newarrivals[i]._id %>"><span class="material-symbols-outlined">
+                      preview
+                      </span></a>
+                  </td>
+
+                  <!-- Modal -->
+<!-- Modal -->
+<!-- Modal -->
+<div id="editModal" class="modal">
+  <div class="modal-content">
+    <span class="close-modal">&times;</span>
+    <h2 id="productTitle"></h2>
+    
+    <img style="width: 200px;height: 200px;" id="productImage" src="https://media.istockphoto.com/id/1392182937/vector/no-image-available-photo-coming-soon.jpg?s=612x612&w=0&k=20&c=3vGh4yj0O2b4tPtjpK-q-Qg0wGHsjseL2HT-pIyJiuc=" alt="Product Image">
+    
+    <b>Gender:</b> <p id="productGender"></p>
+    <b>Category:</b> <p id="productCategory"></p>
+    <b>Subcategory:</b> <p id="productSubcategory"></p>
+    <b>Season:</b> <p id="productSeason"></p>
+    <b>Price:</b> <p id="productPrice"></p>
+    <b>Sale:</b> <p id="productSale"></p>
+    <b>Old_price:</b> <p id="productOldPrice"></p>
+    <b>Brand:</b> <p id="productBrand"></p>
+    <b>Description:</b> <br><p id="productDescription"></p>
+    <!-- Add more placeholders for other product details as needed -->
+  </div>
+</div>
+                  <% } else { %>
+                    <p>Only for Admin to Edit</p>
+                <% } %>
+              </tr>
+              <% } %>
+            </tbody>
+          </table>
+          <a href="#">Show All</a>
+        </div>
+      </main>
+      <!-- ======================Main ended=========================== -->
+      <div class="right">
+        <div class="top">
+          <button id="menu-btn">
+            <span class="material-symbols-outlined"> menu </span>
+          </button>
+          <div class="theme-toggler">
+            <span class="material-symbols-outlined active"> light_mode </span>
+            <span class="material-symbols-outlined"> dark_mode </span>
+          </div>
+          <div class="profile">
+            <div class="info">
+              <p>Hey, <b><%= user.username || 'Guest' %></b></p>
+              <small class="text-muted"><%= user.role || 'Role not defined' %></small>
+           </div>
+            <div class="profile-photo">
+              <img src="" alt="" />
+            </div>
+          </div>
+        </div>
+        <!-- ================================Top Ended============================ -->
+       
+    <script>
+      const sideMenu = document.querySelector("aside");
+      const menuBtn = document.querySelector("#menu-btn");
+      const closeBtn = document.querySelector("#close-btn");
+      const themeToggler = document.querySelector(".theme-toggler");
+      menuBtn.addEventListener("click", () => {
+        sideMenu.style.display = "block";
+      });
+      closeBtn.addEventListener("click", () => {
+        sideMenu.style.display = "none";
+      });
+
+      themeToggler.addEventListener("click", () => {
+        document.body.classList.toggle("dark-theme-variables");
+        themeToggler
+          .querySelector("span:nth-child(1)")
+          .classList.toggle("active");
+        themeToggler
+          .querySelector("span:nth-child(2)")
+          .classList.toggle("active");
+      });
+
+      // orders.forEach(order =>{
+      //   const tr = document.createElement('tr');
+      //   const trContent =`
+      //            <td>${order.productname}</td>
+      //   `
+      // })
+      // tr.innterHTML =trContent;
+      // document.querySelector('table tbody').appendChild(tr);
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+     <script>
+       window.onload = function() {
+           const rows = document.querySelectorAll('tr[data-missing="true"]');
+           console.log('Rows with missing data:', rows.length);
+           for (const row of rows) {
+               row.classList.add('missing-data');
+           }
+       };
+
+       $("#change-status").change(function(){
+         var selectedValue=$('#change-status :selected').text(); 
+         if(selectedValue === "All"){
+           $('table > tbody  > tr').each(function(i) {
+                 $(this).show() 
+           });
+         }else{
+           $('table > tbody  > tr > td').each(function(i) {
+             if(this.dataset.label === "Status"){
+               if($(this).children( 'span' ).text() != selectedValue){
+                 $(this).closest("tr").hide()
+               }else{
+                 $(this).closest("tr").show()
+               }
+ 
+             }
+           });
+         }
+         
+       });
+
+
+   </script>
+   
+   <script>
+    // Get the modal
+    var modal = document.getElementById("editModal");
+  
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close-modal")[0];
+  
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+      modal.style.display = "none";
+    }
+  
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+  
+    // Get all edit buttons
+    var editButtons = document.querySelectorAll('.edit-btn');
+  
+    editButtons.forEach(function(button) {
+      button.addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent the default action of the link
+        var productId = this.getAttribute('data-id');
+        fetch('/adminsystem/newarrival/' + productId)
+          .then(response => response.json())
+          .then(product => {
+            // Populate the modal with the product details
+            document.getElementById('productTitle').textContent = product.title;
+            document.getElementById('productDescription').textContent = product.description;
+            document.getElementById('productPrice').textContent = product.price;
+            document.getElementById('productGender').textContent = product.gender;
+            document.getElementById('productCategory').textContent = product.category;
+            document.getElementById('productSubcategory').textContent = product.subcategory;
+            document.getElementById('productSeason').textContent = product.season;
+            document.getElementById('productSale').textContent = product.sale ? 'On Sale' : 'Not On Sale';
+            document.getElementById('productOldPrice').textContent = product.old_price;
+            document.getElementById('productBrand').textContent = product.brand;
+  
+            // Show the modal
+            modal.style.display = 'block';
+          })
+          .catch(error => console.error('Error:', error));
+      });
+    });
+  </script>
+    
+  </body>
+</html>

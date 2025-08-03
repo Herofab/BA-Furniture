@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Terms & Conditions - B A Furniture</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: white;
+      color: #333;
+    }
+
+    .salesmobie {
+      display: none;
+    }
+
+    @media only screen and (max-width: 768px) {
+      .salesmobie {
+        text-align: center;
+        background-color: goldenrod;
+        color: #fff;
+        padding: 5px;
+        display: block;
+      }
+    }
+
+    .term {
+      width: 90%;
+      max-width: 1000px;
+      margin: 20px auto;
+      border: 2px solid goldenrod;
+      border-radius: 20px;
+      background-color: #fff;
+      padding: 30px;
+      box-shadow: 0 0 10px rgba(218, 165, 32, 0.2);
+    }
+
+    .termhead {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .termhead h1 {
+      color: goldenrod;
+      font-size: 32px;
+      margin: 10px 0;
+    }
+
+    .termbody {
+      color: #555;
+      font-size: 17px;
+      line-height: 1.8;
+      padding: 0 10px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    ul li {
+      list-style-type: disc;
+      margin-bottom: 15px;
+    }
+
+    .termheadbody {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    .container1 {
+      width: 60px;
+      height: 60px;
+      overflow: hidden;
+      border-radius: 50%;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .container1 img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .container1 img:hover {
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body>
+
+  <%- include('component/navbar') %>
+  <%- include('component/mobilenav') %>
+
+  <div class="salesmobie">
+    Get 15% off your next furniture order!
+  </div>
+
+  <section class="term">
+    <div class="termhead">
+      <h1>Terms & Conditions</h1>
+    </div>
+
+    <div class="termbody">
+      <ul>
+        <li>You may cancel your furniture order any time before it is processed. Once shipped, our return & exchange policy applies.</li>
+        <li>Furniture items are carefully inspected before shipping. Minor variations in color or texture are part of the natural characteristics of wood and upholstery and are not considered defects.</li>
+        <li>If a product is damaged in transit, please contact us within 48 hours for resolution.</li>
+        <li>Discounted items and promotional offers are non-refundable but may be exchangeable subject to stock availability.</li>
+        <li>All custom-made furniture orders are final and non-refundable after confirmation.</li>
+        <li>If you are applying a discount or promo code, ensure it is valid at the time of checkout. Orders with expired or invalid codes may be canceled.</li>
+        <li>Returns are only accepted for unused, undamaged furniture in original packaging within 7 days.</li>
+        <li>Delivery timelines may vary by location, especially for made-to-order furniture. Any delay due to unforeseen events will be communicated.</li>
+        <li>Shipping and handling charges are non-refundable. Additional charges may apply for re-delivery attempts.</li>
+        <li>For customer service, contact us at <a href="mailto:care@bafurniture.pk" style="color: goldenrod;">care@bafurniture.pk</a> or call us at <a href="tel:+923006020082" style="color: goldenrod;">+92 300 6020082</a>.</li>
+      </ul>
+    </div>
+
+    <div class="termhead">
+      <h1>Social Accounts</h1>
+    </div>
+
+    <div class="termheadbody">
+      <div class="container1">
+        <a href="https://www.facebook.com/PentaSports.pk" target="_blank">
+          <img src="/images/facebook.png" alt="Facebook" />
+        </a>
+      </div>
+      <div class="container1">
+        <a href="https://www.instagram.com/penta.pk/" target="_blank">
+          <img src="/images/instgaram.jpg" alt="Instagram" />
+        </a>
+      </div>
+      <div class="container1">
+        <a href="https://api.whatsapp.com/send/?phone=923338420501&text&type=phone_number&app_absent=0" target="_blank">
+          <img src="/images/whastapp.png" alt="WhatsApp" />
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <%- include('component/footer') %>
+
+</body>
+</html>

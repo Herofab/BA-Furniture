@@ -1,0 +1,51 @@
+<section class="product-cart-sec">
+    <div class="container">
+      <div class="group group-one">
+        <div class="listProduct">
+          <% products.slice().reverse().forEach(product => { %>
+          <div class="item">
+            <%  if (product.discount) { %>
+            <span class="discount-label"><%= product.discount %>%OFF</span>
+            <% } %>
+            <a href="/product/<%= product._id %>">
+              <img src="<%= product.image.replace('/public', '') %>" alt="" />
+            </a>
+            <div class="card_detail">
+              <h2><%= product.title.toLowerCase().split(' ').slice(0, 3).join(' ') %></h2>
+              <div style="display: flex;justify-content: space-between;">
+                <div>
+              <span class="price" id="price"><%= product.price %></span><br />
+              <%  if (product.discount) { %>
+              <span class="old_price" id="old_price"><%= product.old_price %></span>
+          
+              <% } %>
+             </div>
+
+               <div class="mobile">
+                <form action="/add-to-wishlist" method="post">
+                  <input
+                    type="hidden"
+                    name="productId"
+                    value="<%= product._id %>"
+                  />
+                  <input type="submit" value="&#x2661" class="custom-submit">
+                </form>
+               </div>
+           </div>
+              <form action="/add-to-wishlist" method="post">
+                <input
+                  type="hidden"
+                  name="productId"
+                  value="<%= product._id %>"
+                />
+                <button type="submit">
+                  <span class="material-symbols-outlined">favorite</span>
+                </button>
+              </form>
+            </div>
+          </div>
+          <% }) %>
+        </div>
+      </div>
+    </div>
+  </section>

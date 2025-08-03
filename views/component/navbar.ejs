@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/desknav.css">
+
+</head>
+<body>
+     <!-- Header Section start -->
+     <header >
+        <div class="top-bar">
+          <div class="top-bar-inner">
+            <span class="top-bar-span">BA Furniture. Where style & Comfort meet</span>
+            <!-- <a href="#" class="top-bar-link"
+              ><i class="fa-solid fa-phone"></i>(051) 2347157</a
+            > -->
+          </div>
+        </div>
+        <div class="midlle-bar">
+          <div class="container" >
+            <a href="/" class="logo">
+              <!-- <img src="/images/MINI LOGOS" alt="" />  -->
+              <h2><img src="/images/faheemmainlogo.png" style="height: 50px;width: 50px;" alt=""></h2>
+            </a>
+           
+            <div class="midlle-bar-link">
+             
+              <a href="#" class="news"><input style="padding: 3px;border: none;
+              border-bottom: 1px solid #000;" type="text"
+               id="search_box" onkeypress="search(event)" placeholder="&#128269; search here...." ></a>
+              <div id="suggestions-container" class="suggestions-container"></div>
+              <a href="/wishlist" class="wishlist-link">
+                <i class="fa-regular fa-heart"></i>
+                <div id="wishlistItemCount" class="wishlist-count">
+                    <%= wishlistItemCount %>
+                </div>
+            </a>
+            &nbsp;
+             
+              <a href="/cart" class="iconCart-link">
+                <i class="fa-solid fa-cart-shopping" id="cart-btn"></i>
+               
+                <div id="cartItemCount" class="cart-count">
+                    <%= itemCount ? itemCount : 0 %>
+                </div>
+               
+               
+            </a>
+            &nbsp;
+            <a href="/login"><i class="fa-solid fa-user"></i></a>
+            &nbsp;
+            <a href=""> <button id="toggle-nav" class="toggly" ><span class="material-symbols-outlined">
+              menu
+              </span></button></a>
+           
+            </div>
+          </div>
+        </div>
+        <div class="bottom-bar">
+          <nav style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;"  !important>
+            <ul class="bottom-nav-list">
+              <li><a href="/" class="nav-item"><img style="width: 25px;height: 25px;" src="/images/faheemmainlogo.png" alt="" /></a></li>
+             <li class="dropdown">
+  <a href="#" class="nav-item">BEDS</a>
+  <ul class="dropdown-menu">
+
+    <!-- Bridal / Wedding Beds -->
+    <li class="subdropdown-item">
+      <a href="/alldata?category=beds&subcategory=wedding" class="subdropdown-link">Wedding Beds</a>
+      <ul class="subdropdown-menu">
+        <li class="dropdown-item"><a href="/alldata?category=beds&subcategory=wedding&childsubcategory=chinioti" class="subdropdown-link">Chinioti Beds</a></li>
+        <li class="dropdown-item"><a href="/alldata?category=beds&subcategory=wedding&childsubcategory=royal" class="subdropdown-link">Royal Beds</a></li>
+      </ul>
+    </li>
+
+    <!-- King Size Beds -->
+    <li class="subdropdown-item">
+      <a href="/alldata?category=beds&subcategory=king-size" class="subdropdown-link">King Size Beds</a>
+    </li>
+
+    <!-- Queen Size Beds -->
+    <li class="subdropdown-item">
+      <a href="/alldata?category=beds&subcategory=queen-size" class="subdropdown-link">Queen Size Beds</a>
+    </li>
+
+    <!-- Single Beds -->
+    <li class="subdropdown-item">
+      <a href="/alldata?category=beds&subcategory=single" class="subdropdown-link">Single Beds</a>
+    </li>
+
+    <!-- Kids Beds -->
+    <li class="subdropdown-item">
+      <a href="/alldata?category=beds&subcategory=kids" class="subdropdown-link">Kids Beds</a>
+      <ul class="subdropdown-menu">
+        <li class="dropdown-item"><a href="/alldata?category=beds&subcategory=kids&childsubcategory=bunk" class="subdropdown-link">Bunk Beds</a></li>
+        <li class="dropdown-item"><a href="/alldata?category=beds&subcategory=kids&childsubcategory=themed" class="subdropdown-link">Themed Beds</a></li>
+      </ul>
+    </li>
+
+    <!-- Carving Beds -->
+    <li class="subdropdown-item">
+      <a href="/alldata?category=beds&subcategory=carving" class="subdropdown-link">Carving Beds</a>
+    </li>
+
+    <!-- Upholstered Beds -->
+    <li class="subdropdown-item">
+      <a href="/alldata?category=beds&subcategory=upholstered" class="subdropdown-link">Upholstered Beds</a>
+    </li>
+
+    <!-- Storage Beds -->
+    <li class="subdropdown-item">
+      <a href="/alldata?category=beds&subcategory=storage" class="subdropdown-link">Storage Beds</a>
+    </li>
+
+    <!-- Modern Beds -->
+    <li class="subdropdown-item">
+      <a href="/alldata?category=beds&subcategory=modern" class="subdropdown-link">Modern Beds</a>
+    </li>
+
+  </ul>
+</li>
+
+              <li class="dropdown">
+  <a href="#" class="nav-item">SOFA SET</a>
+  <ul class="dropdown-menu">
+
+    <!-- Wooden Sofas -->
+    <li class="subdropdown-item">
+      <a href="/alldata?category=sofa&subcategory=wooden" class="subdropdown-link">Wooden Sofas</a>
+      <ul class="subdropdown-menu">
+        <li class="dropdown-item">
+          <a href="/alldata?category=sofa&subcategory=wooden&childsubcategory=chinioti" class="subdropdown-link">Chinioti Style</a>
+        </li>
+        <li class="dropdown-item">
+          <a href="/alldata?category=sofa&subcategory=wooden&childsubcategory=carved" class="subdropdown-link">Hand-Carved</a>
+        </li>
+      </ul>
+    </li>
+
+    <!-- Upholstered Sofas -->
+    <li class="subdropdown-item">
+      <a href="/alldata?category=sofa&subcategory=upholstered" class="subdropdown-link">Upholstered Sofas</a>
+      <ul class="subdropdown-menu">
+        <li class="dropdown-item"><a href="/alldata?category=sofa&subcategory=upholstered&childsubcategory=fabric" class="subdropdown-link">Fabric Sofas</a></li>
+        <li class="dropdown-item"><a href="/alldata?category=sofa&subcategory=upholstered&childsubcategory=velvet" class="subdropdown-link">Velvet Sofas</a></li>
+        <li class="dropdown-item"><a href="/alldata?category=sofa&subcategory=upholstered&childsubcategory=leather" class="subdropdown-link">Leather Sofas</a></li>
+      </ul>
+    </li>
+
+    <!-- L-Shaped Sofas -->
+    <li class="subdropdown-item">
+      <a href="/alldata?category=sofa&subcategory=lshape" class="subdropdown-link">L-Shaped Sofas</a>
+    </li>
+
+    <!-- Recliner Sofas -->
+    <li class="subdropdown-item">
+      <a href="/alldata?category=sofa&subcategory=recliner" class="subdropdown-link">Recliner Sofas</a>
+    </li>
+
+    <!-- Sofa Cum Bed -->
+    <li class="subdropdown-item">
+      <a href="/alldata?category=sofa&subcategory=sofacumbed" class="subdropdown-link">Sofa Cum Bed</a>
+    </li>
+
+    <!-- 3-Seater / 5-Seater Sets -->
+    <li class="subdropdown-item">
+      <a href="/alldata?category=sofa&subcategory=sets" class="subdropdown-link">Sofa Sets</a>
+      <ul class="subdropdown-menu">
+        <li class="dropdown-item"><a href="/alldata?category=sofa&subcategory=sets&childsubcategory=3seater" class="subdropdown-link">3-Seater</a></li>
+        <li class="dropdown-item"><a href="/alldata?category=sofa&subcategory=sets&childsubcategory=5seater" class="subdropdown-link">5-Seater</a></li>
+        <li class="dropdown-item"><a href="/alldata?category=sofa&subcategory=sets&childsubcategory=7seater" class="subdropdown-link">7-Seater</a></li>
+      </ul>
+    </li>
+
+    <!-- Sofa Accessories -->
+    <li class="subdropdown-item">
+      <a href="/alldata?category=sofa&subcategory=accessories" class="subdropdown-link">Sofa Accessories</a>
+      <ul class="subdropdown-menu">
+        <li class="dropdown-item"><a href="/alldata?category=sofa&subcategory=accessories&childsubcategory=cushions" class="subdropdown-link">Cushions</a></li>
+        <li class="dropdown-item"><a href="/alldata?category=sofa&subcategory=accessories&childsubcategory=covers" class="subdropdown-link">Sofa Covers</a></li>
+        <li class="dropdown-item"><a href="/alldata?category=sofa&subcategory=accessories&childsubcategory=throws" class="subdropdown-link">Throws & Blankets</a></li>
+      </ul>
+    </li>
+
+  </ul>
+</li>
+
+              <li class="dropdown">
+  <a href="#" class="nav-item">SERVINGS</a>
+  <ul class="dropdown-menu">
+
+    <!-- Dining Tables -->
+    <li class="subdropdown-item">
+      <a href="/alldata?category=servings&subcategory=dining-table" class="subdropdown-link">Dining Tables</a>
+      <ul class="subdropdown-menu">
+        <li class="dropdown-item"><a href="/alldata?category=servings&subcategory=dining-table&childsubcategory=4seater" class="subdropdown-link">4-Seater</a></li>
+        <li class="dropdown-item"><a href="/alldata?category=servings&subcategory=dining-table&childsubcategory=6seater" class="subdropdown-link">6-Seater</a></li>
+        <li class="dropdown-item"><a href="/alldata?category=servings&subcategory=dining-table&childsubcategory=8seater" class="subdropdown-link">8-Seater</a></li>
+      </ul>
+    </li>
+
+    <!-- Guest Tables / Corner Tables -->
+    <li class="subdropdown-item">
+      <a href="/alldata?category=servings&subcategory=guest-table" class="subdropdown-link">Guest Tables</a>
+      <ul class="subdropdown-menu">
+        <li class="dropdown-item"><a href="/alldata?category=servings&subcategory=guest-table&childsubcategory=center" class="subdropdown-link">Center Tables</a></li>
+        <li class="dropdown-item"><a href="/alldata?category=servings&subcategory=guest-table&childsubcategory=corner" class="subdropdown-link">Corner Tables</a></li>
+      </ul>
+    </li>
+
+    <!-- Console Tables -->
+    <li class="subdropdown-item">
+      <a href="/alldata?category=servings&subcategory=console-table" class="subdropdown-link">Console Tables</a>
+    </li>
+
+    <!-- Nesting Tables -->
+    <li class="subdropdown-item">
+      <a href="/alldata?category=servings&subcategory=nesting-table" class="subdropdown-link">Nesting Tables</a>
+    </li>
+
+    <!-- Side Tables -->
+    <li class="subdropdown-item">
+      <a href="/alldata?category=servings&subcategory=side-table" class="subdropdown-link">Side Tables</a>
+    </li>
+
+    <!-- Buffet / Crockery Units -->
+    <li class="subdropdown-item">
+      <a href="/alldata?category=servings&subcategory=buffet" class="subdropdown-link">Buffet & Crockery Units</a>
+    </li>
+
+    <!-- Serving Trolleys -->
+    <li class="subdropdown-item">
+      <a href="/alldata?category=servings&subcategory=trolley" class="subdropdown-link">Serving Trolleys</a>
+    </li>
+
+  </ul>
+</li>
+
+              <li class="dropdown">
+  <a href="/newarrivaldata" class="nav-item">DESIGNER JHOOLAS</a>
+  <ul class="dropdown-menu">
+
+    <!-- Indoor Wooden Jhoolas -->
+    <li class="subdropdown-item">
+      <a href="/alldata?category=jhoolas&subcategory=indoor" class="subdropdown-link">Indoor Jhoolas</a>
+      <ul class="subdropdown-menu">
+        <li class="dropdown-item"><a href="/alldata?category=jhoolas&subcategory=indoor&childsubcategory=carved" class="subdropdown-link">Carved Wooden Jhoolas</a></li>
+        <li class="dropdown-item"><a href="/alldata?category=jhoolas&subcategory=indoor&childsubcategory=modern" class="subdropdown-link">Modern Swing Designs</a></li>
+      </ul>
+    </li>
+
+    <!-- Outdoor Jhoolas -->
+    <li class="subdropdown-item">
+      <a href="/alldata?category=jhoolas&subcategory=outdoor" class="subdropdown-link">Outdoor Jhoolas</a>
+      <ul class="subdropdown-menu">
+        <li class="dropdown-item"><a href="/alldata?category=jhoolas&subcategory=outdoor&childsubcategory=iron" class="subdropdown-link">Iron Frame Jhoolas</a></li>
+        <li class="dropdown-item"><a href="/alldata?category=jhoolas&subcategory=outdoor&childsubcategory=garden" class="subdropdown-link">Garden Swings</a></li>
+      </ul>
+    </li>
+
+    <!-- Royal / Chinioti Jhoolas -->
+    <li class="subdropdown-item">
+      <a href="/alldata?category=jhoolas&subcategory=royal" class="subdropdown-link">Royal Chinioti Jhoolas</a>
+    </li>
+
+    <!-- Hanging Swing Chairs -->
+    <li class="subdropdown-item">
+      <a href="/alldata?category=jhoolas&subcategory=hanging-chair" class="subdropdown-link">Hanging Swing Chairs</a>
+    </li>
+
+    <!-- Jhoolas for Balcony or Lounge -->
+    <li class="subdropdown-item">
+      <a href="/alldata?category=jhoolas&subcategory=lounge" class="subdropdown-link">Balcony & Lounge Swings</a>
+    </li>
+
+  </ul>
+</li>
+
+              <li class="dropdown">
+                <a href="/newarrivaldata" class="nav-item">NEW ARRIVALS</a>
+                
+              </li>
+            
+              
+              <li class="dropdown">
+                <a href="/alldata?discount=15" class="nav-item" style="color: goldenrod;">Sales</a>
+                
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+    <!-- Include jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Include your custom script -->
+<script src="/js/desknav.js"></script>
+      
+
+        <!-- scripts -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+       
+</body>
+</html>

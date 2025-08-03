@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/jquery.slick/1.8.1/slick.css"/>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="icon" type="image/png" href="/images/penta.png">
+        <link rel="stylesheet" href="/css/productcart.css" />
+
+    <title>BA Furniture</title>
+    <style>
+        .mySlides {
+            display: none;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .mySlides.show {
+            display: block;
+            opacity: 1;
+        }
+
+        .salesmobie {
+            display: none;
+        }
+        .mobileindexcomp{
+            display: none !important;
+        }
+        @media only screen and (max-width: 768px) {
+            .salesmobie {
+                text-align: center;
+                background-color: darkgoldenrod;
+                color: #fff;
+                padding: 5px;
+                display: block;
+            }
+
+            .banner-sec{
+            display: none !important;
+        }
+            .mobileindexcomp{
+            width: 100% !important;
+            margin: 20px auto !important;
+            display: block !important;
+        }
+        .mobileindexcomp .parentcomp{
+            width: 90% !important;
+            display: flex !important;
+            flex-direction: column !important;
+            margin: auto auto !important;
+
+        }
+        .mobileindexcomp .childcomp{
+              width: 80% !important;
+              margin: 10px auto !important;
+              
+        }
+       
+    }
+    
+.wine-slider {
+  position:relative;
+  max-width:1260px;
+  margin:50px auto;
+  .slide-container {
+    position:relative;
+    height:420px;
+    left:50%;
+    margin-left:-90px;
+    transition:transform 0.2s;
+    a[class*='slide'] {
+      float:left;
+      display:block;
+      height:340px;
+      width:350px;
+      background-size:cover;
+      background-position:center;
+      margin:40px;
+      filter: blur(5px);
+      transition:all 0.2s;
+      &.active {
+        filter: blur(0px);
+        transform:scale(1.2);
+      }
+    }
+  }
+  .arrow {
+    position:absolute;
+    top:50%;
+    font-size:40px;
+    font-weight:bold;
+    cursor:pointer;
+    &.previous {
+      left:0px;
+    }
+    &.next {
+      right:0px;
+    }
+  }
+}
+
+.aboutSection {
+  padding-bottom: 200px;
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.sliderSection {
+  display: flex;
+  min-width: 100%;
+}
+
+.about {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 3rem;
+}
+
+.aboutImg {
+  min-width: 100vw;
+  margin-left: 50px;
+}
+
+   
+.cardSlider__section {
+  position: relative;
+  .swiper {
+    width: calc(100% - 60px);
+    margin: 0 auto;
+    .swiper-wrapper {
+      @media (min-width: 992px) {
+        flex-flow: row wrap;
+        align-items: stretch;
+      }
+      .cardItem {
+        width: 33.333333%;
+        height: auto;
+        padding: 15px;
+        @media (max-width: 991px) {
+          width: 100%;
+        }
+      }
+      .card__wrapper {
+        height: 100%;
+        border: 1px solid #ddd;
+        padding: 45px 30px;
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        justify-content: center;
+        .card__title {
+          margin-bottom: 15px;
+          text-align: center;
+        }
+        .card__desc {
+          margin-bottom: 15px;
+          text-align: center;
+          font-size: 14px;
+          line-height: 1.4;
+        }
+        .card__btn {
+          border-radius: 5px;
+          padding: 12px 24px;
+          text-decoration: none;
+          color: #000;
+        }
+      }
+    }
+  }
+  .swiper-pagination {
+    display: none;
+    @media (max-width: 991px) {
+      display: flex;
+      justify-content: center;
+      bottom: -30px;
+    }
+    .swiper-pagination-bullet {
+      background-color: #000;
+    }
+  }
+  .swiper-button-prev,
+  .swiper-button-next{
+    display: none;
+    color: #000;
+    @media (max-width: 991px) {
+      display: flex;
+    }
+    &:after {
+      font-size: 30px;
+    }
+  }
+}
+    </style>
+    <style>
+      html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-size: 1rem;
+  line-height: 1.25;
+  /* background-color: #18222d; */
+}
+
+.grid {
+  width: 100%;
+  max-width: 60rem;
+  margin-left: auto;
+  margin-right: auto;
+
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.grid-block {
+  width: 50%;
+  min-height: 11.25rem;
+  padding: 1rem;
+}
+
+.image-grid {
+  -webkit-transform: rotateX(45deg) rotateZ(45deg);
+  transform: rotateX(45deg) rotateZ(45deg);
+  -webkit-perspective: 1000px;
+  perspective: 1000px;
+}
+
+.image-grid .tile-link:hover .tile-img {
+  top: -1rem;
+  left: -1rem;
+}
+
+.image-grid .tile-img {
+  position: relative;
+  top: 0;
+  left: 0;
+  -webkit-transition-property: opacity, top, left, box-shadow;
+  transition-property: opacity, top, left, box-shadow;
+}
+
+.tile-link {
+  display: block;
+}
+
+.tile-link:hover .tile-img {
+  opacity: 1;
+}
+
+.tile-link:hover .tile-img-link {
+  display: block;
+}
+
+.tile-link:hover .tile-img-link:hover .tile-img {
+  opacity: 0.5;
+}
+
+.tile-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  opacity: 1;
+  -webkit-transition-property: opacity;
+  transition-property: opacity;
+  -webkit-transition-duration: 0.125s;
+  transition-duration: 0.125s;
+  -webkit-transition-timing-function: ease-in;
+  transition-timing-function: ease-in;
+}
+.tile-link:hover .tile-img1 {
+  box-shadow: 5px 5px rgba(244, 170, 200, 0.4),
+    10px 10px rgba(244, 170, 200, 0.3), 15px 15px rgba(244, 170, 200, 0.2),
+    20px 20px rgba(244, 170, 200, 0.1), 25px 25px rgba(244, 170, 200, 0.05);
+}
+
+.tile-link:hover .tile-img2 {
+  box-shadow: 5px 5px rgba(45, 186, 233, 0.4), 10px 10px rgba(45, 186, 233, 0.3),
+    15px 15px rgba(45, 186, 233, 0.2), 20px 20px rgba(45, 186, 233, 0.1),
+    25px 25px rgba(45, 186, 233, 0.05);
+}
+
+.tile-link:hover .tile-img3 {
+  box-shadow: 5px 5px rgba(214, 221, 244, 0.4),
+    10px 10px rgba(214, 221, 244, 0.3), 15px 15px rgba(214, 221, 244, 0.2),
+    20px 20px rgba(214, 221, 244, 0.1), 25px 25px rgba(214, 221, 244, 0.05);
+}
+
+.tile-link:hover .tile-img4 {
+  box-shadow: 5px 5px rgba(82, 119, 192, 0.4), 10px 10px rgba(82, 119, 192, 0.3),
+    15px 15px rgba(82, 119, 192, 0.2), 20px 20px rgba(82, 119, 192, 0.1),
+    25px 25px rgba(82, 119, 192, 0.05);
+}
+
+.tile-link:hover .tile-img5 {
+  box-shadow: 5px 5px rgba(138, 218, 245, 0.4),
+    10px 10px rgba(138, 218, 245, 0.3), 15px 15px rgba(138, 218, 245, 0.2),
+    20px 20px rgba(138, 218, 245, 0.1), 25px 25px rgba(138, 218, 245, 0.05);
+}
+
+.tile-link:hover .tile-img6 {
+  box-shadow: 5px 5px rgba(203, 215, 193, 0.4),
+    10px 10px rgba(203, 215, 193, 0.3), 15px 15px rgba(203, 215, 193, 0.2),
+    20px 20px rgba(203, 215, 193, 0.1), 25px 25px rgba(203, 215, 193, 0.05);
+}
+
+.tile-link:hover .tile-img7 {
+  box-shadow: 5px 5px rgba(91, 209, 250, 0.4), 10px 10px rgba(91, 209, 250, 0.3),
+    15px 15px rgba(91, 209, 250, 0.2), 20px 20px rgba(91, 209, 250, 0.1),
+    25px 25px rgba(91, 209, 250, 0.05);
+}
+
+.tile-link:hover .tile-img8 {
+  box-shadow: 5px 5px rgba(145, 156, 196, 0.4),
+    10px 10px rgba(145, 156, 196, 0.3), 15px 15px rgba(145, 156, 196, 0.2),
+    20px 20px rgba(145, 156, 196, 0.1), 25px 25px rgba(145, 156, 196, 0.05);
+}
+
+.tile-link:hover .tile-img9 {
+  box-shadow: 5px 5px rgba(188, 97, 129, 0.4), 10px 10px rgba(188, 97, 129, 0.3),
+    15px 15px rgba(188, 97, 129, 0.2), 20px 20px rgba(188, 97, 129, 0.1),
+    25px 25px rgba(188, 97, 129, 0.05);
+}
+
+.tile-link:hover .tile-img10 {
+  box-shadow: 5px 5px rgba(4, 140, 231, 0.4), 10px 10px rgba(4, 140, 231, 0.3),
+    15px 15px rgba(4, 140, 231, 0.2), 20px 20px rgba(4, 140, 231, 0.1),
+    25px 25px rgba(4, 140, 231, 0.05);
+}
+
+    </style>
+</head>
+
+<body>
+    <%- include('component/navbar') %>
+    <%- include('component/mobilenav') %>
+    <%- include('component/newsletter') %>
+
+    <%- include('component/discounttitle') %>
+
+    <%- include('component/w3indexbanner') %>
+
+
+    <%- include('component/w3indexcomp') %>
+
+
+    <%- include('component/w3indexcompmobile') %>
+   
+
+    <countdown-timer widgetid="11899" class="widgio-widget"></countdown-timer>
+    <%- include('component/footer') %>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.3/gsap.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="./js/desknav.js"></script>
+    <script src="./js/custom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.3/ScrollTrigger.min.js"></script>
+    <script>
+        var slideIndex = 1;
+        showDivs(slideIndex);
+
+        function plusDivs(n) {
+            showDivs(slideIndex += n);
+        }
+
+        function showDivs(n) {
+            var i;
+            var x = document.getElementsByClassName("mySlides");
+            if (n > x.length) {slideIndex = 1}
+            if (n < 1) {slideIndex = x.length}
+            for (i = 0; i < x.length; i++) {
+                x[i].className = x[i].className.replace(" show", "");
+            }
+            x[slideIndex-1].className += " show";
+        }
+
+        setInterval(function() {
+            plusDivs(1);
+        }, 100000);
+
+var slidePosition = 0,
+    numOfSlide = $(".slide").length,
+    currentSlide = Math.floor(numOfSlide / 2),
+    slideWidth = $(".slide").outerWidth(true);
+
+moveSlide(currentSlide);
+$(".slide-" + currentSlide).addClass("active");
+
+$(".slide-container").css("width", numOfSlide * slideWidth);
+
+$(".previous").click(function(){
+  
+  $(".slide-" + currentSlide).removeClass("active");
+  if ((currentSlide - 1) >= 0) {
+    currentSlide--;
+  } else {
+    currentSlide = (numOfSlide - 1);
+  }
+  $(".slide-" + currentSlide).addClass("active");
+  
+  moveSlide(currentSlide);
+  
+});
+
+$(".next").click(function(){
+  
+  $(".slide-" + currentSlide).removeClass("active");
+  if ((currentSlide + 1) < numOfSlide) {
+    currentSlide++;
+  } else {
+    currentSlide = 0;
+  }
+  $(".slide-" + currentSlide).addClass("active");
+  
+  moveSlide(currentSlide);
+  
+});
+
+function moveSlide(slideNumber) {
+  var slidePosition = -1 * (slideNumber * slideWidth);
+  $(".slide-container").css({"transform":"translateX("+ slidePosition +"px)"});
+}
+
+
+
+console.clear();
+
+gsap.registerPlugin(ScrollTrigger);
+const slides = gsap.utils.toArray(".about");
+const tl = gsap.timeline({
+ scrollTrigger: {
+    trigger: ".sliderSection",
+    start: "top top",
+    end: "+=" + (100 * (slides.length - 1)) + "5",
+    pin: ".sliderSection",
+    scrub: true,
+    markers: false, // Disable markers
+ }
+}).to(slides, {
+ xPercent: -(100 * (slides.length - 1)),
+ ease: "none",
+});
+
+const images = gsap.utils.toArray(".aboutImg");
+images.forEach((image, index) => {
+ gsap.from(image, {
+    opacity: 0.2,
+    scale: 0.5,
+    transformOrigin: "center center",
+    ease: "none",
+    scrollTrigger: {
+      trigger: slides[index],
+      containerAnimation: tl,
+      start: "left 75%",
+      end: "left 25%",
+      markers: false, // Disable markers for each image as well
+      scrub: true,
+    }
+ });
+});
+
+tl.progress(1).progress(0);
+
+
+// Pricing table - mobile only slider
+var init = false;
+var pricingCardSwiper;
+function swiperCard() {
+  if (window.innerWidth <= 991) {
+    if (!init) {
+      init = true;
+      pricingCardSwiper = new Swiper(".cardSlider", {
+        slidesPerView: "1",
+        spaceBetween: 0,
+        grabCursor: true,
+        keyboard: true,
+        autoHeight: false,
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+        breakpoints: {
+          768: {
+            slidesPerView: 2,
+          }
+        },
+      });
+    }
+  } else if (init) {
+    pricingCardSwiper.destroy();
+    init = false;
+  }
+}
+swiperCard();
+window.addEventListener("resize", swiperCard);
+
+    </script>
+ 
+</body>
+
+</html>

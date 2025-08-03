@@ -1,0 +1,54 @@
+
+    if (brand  && brand=== 'puma') { %>
+      <div class="pumadiver" >
+       
+      </div>
+        <!-- Additional content can go here -->
+      <% } else if (brand  && brand=== 'skecher') { %>
+        <div class="skechdiver" >
+          <img  src="/images/skecher/skechbanner.jpeg" alt="Descriptive Alt Text" style="width: 100%; height: auto; object-fit: cover;">
+      
+        </div>
+        <h3 style="text-align: center;">Featured Comfort Technologies</h3>
+        <div class="icon-skecher" style="width: 80%;margin: 10px auto;display: flex;justify-content: center;flex-wrap: wrap;">
+          <img style="object-fit: cover;background-repeat: no-repeat;width: 150px;height: 100px;margin: 10px;" src="/images/skecher/1.jpg" alt="">
+          <img style="object-fit: cover;background-repeat: no-repeat;width: 150px;height: 100px;margin: 10px;" src="/images/skecher/2.jpg" alt="">
+          <img style="object-fit: cover;background-repeat: no-repeat;width: 150px;height: 100px;margin: 10px;" src="/images/skecher/3.jpg" alt="">
+          <img style="object-fit: cover;background-repeat: no-repeat;width: 150px;height: 100px;margin: 10px;" src="/images/skecher/4.jpg" alt="">
+        </div>
+     <% } else if (brand  && brand=== 'ugg') { %>
+      <div class="diver0">
+        <video autoplay muted loop style="width: 100%; height: auto; object-fit: cover;">
+          <source src="images/ugg/uggbanner.webm" type="video/webm">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="diver1">
+        <video autoplay muted loop style="width: 100%; height: auto; object-fit: cover;">
+          <source src="images/ugg/uggbannermob.webm" type="video/webm">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      
+      <% } else if (brand  && brand=== 'timberland') { %>
+      <img src="https://www.timberland.com/content/publish/caas/v1/media/424022/data/e80bd571478c9fa53e3ec57583f67bf1/011424-indigo-hero-en-d.jpg?" alt="Descriptive Alt Text" style="width: 100%; height: auto; object-fit: cover;">
+      
+      <% } else if (brand  && brand=== 'reef') { %>
+     <div class="diver"> <img src="/images/reef/reefbanner.webp" style="width: 100%; height: auto; object-fit: cover;">
+     </div>
+      <% } else if (brand  && brand=== 'merrel') { %>
+     <div class="diver">
+      <img src="/images/merrel/merrelbanner.jpg" alt="Descriptive Alt Text" style="width: 100%; height: auto; object-fit: cover;">
+      
+     </div>
+      <% } else if (brand  && brand=== 'crocs') { %>
+      <div class="diver">
+        <img src="/images/crocs/crocsbanner.png" alt="Descriptive Alt Text" style="width: 100%; height: auto; object-fit: cover;">
+     
+      </div>
+      <% } else { %>
+      <img src="https://www.pentasports.pk/images/bgbanner/web-banner.png" alt="Descriptive Alt Text" style="width: 100%; height: auto; object-fit: cover;">
+      <% } %>
+   
+    </div>
+  </section>

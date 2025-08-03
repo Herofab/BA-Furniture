@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
+
+   
+    <title>Admin</title>
+    <link rel="stylesheet" href="/css/dashboard.css">
+    <style>
+       main .recent-orders {
+        margin-top: 2rem;
+        height: auto;
+        overflow-y: scroll;
+        
+      }
+    
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <aside>
+        <div class="top">
+          <div class="logo">
+            <img src="/images/faheemmainlogo.png" alt="" />
+            <h2>BA<span class="danger">Furniture</span></h2>
+          </div>
+          <div class="close" id="close-btn">
+            <span class="material-symbols-outlined"> close </span>
+          </div>
+        </div>
+        <div class="sidebar">
+          <a href="/adminsystem/dashboard"  >
+            <span class="material-symbols-outlined"> dashboard </span>
+            <h3>DASHBOARD</h3>
+          </a>
+          <a href="/adminsystem/order">
+            <span class="material-symbols-outlined"> orders </span>
+            <h3>ORDERS</h3>
+          </a>
+          <a href="/adminsystem/sales">
+            <span class="material-symbols-outlined"> point_of_sale </span>
+            <h3>SALE</h3>
+          </a>
+          <a href="/adminsystem/newarrival" >
+            <span class="material-symbols-outlined"> database </span>
+            <h3>NEW ARRIVAL</h3>
+          </a>
+          <a href="/adminsystem/additem">
+            <span class="material-symbols-outlined"> upload_file </span>
+            <h3>ADD NEW</h3>
+          </a>
+          <a href="/adminsystem/webtraffic" class="active">
+            <span class="material-symbols-outlined">
+              nest_doorbell_visitor
+              </span>
+            <h3>WEB TRAFFIC</h3>
+          </a>
+          <a href="/logout">
+            <span class="material-symbols-outlined"> logout </span>
+            <h3>Logout</h3>
+          </a>
+        </div>
+      </aside>
+      <main>
+        <h1>DASHBOARD</h1>
+       <!-- webtraffic.ejs -->
+<div class="date">
+  <input type="date" id="date-input" value="<%= new Date().toISOString().split('T')[0] %>" />
+  <button id="submit-date">Submit</button>
+ </div>
+        <div class="insights">
+          <!-- =====================================start=================================================== -->
+        </div>
+          <% if (user.role !== 'operator' && user.role !== 'guest' ) { %>
+         
+          <div class="recent-orders">
+            <h2>WEB TRAFFIC</h2>
+              <table>
+                <thead>
+                  <tr>
+                    <th>page</th>
+                    <th>Count</th>
+                    <th>Date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% trafficData.forEach(function(data) { %>
+                    <tr>
+                      <td><%= data._id.page %></td>
+                      <td><%= data.count %></td>
+                      <td>(<%= data._id.date %>)</td>
+                    </tr>
+                    <% }); %>
+                </tbody>
+              </table>
+              <% } else { %>
+                <h1>WELCOME TO PUMA PAKISTAN</h1>
+                <p>SORRY! YOU ARE NOT ALLOWED TO SEE THIS PAGE YOUR ACCESS ONLY IN (<span class="material-symbols-outlined">
+                  database
+                  </span> NEWARRIVALS)  &  (<span class="material-symbols-outlined">add</span> ADDITEMS) </p>
+            <% } %>
+            <a href="#">Show All</a>
+          </div>
+    
+          <!-- =====================================end=================================================== -->
+     
+      </main>
+      <!-- ======================Main ended=========================== -->
+      <div class="right">
+        <div class="top">
+          <button id="menu-btn">
+            <span class="material-symbols-outlined"> menu </span>
+          </button>
+          <div class="theme-toggler">
+            <span class="material-symbols-outlined active"> light_mode </span>
+            <span class="material-symbols-outlined"> dark_mode </span>
+          </div>
+          <div class="profile">
+            <div class="info">
+              <p>Hey, <b><%= user.username || 'Guest' %></b></p>
+              <small class="text-muted"><%= user.role || 'Role not defined' %></small>
+           </div>
+            <div class="profile-photo">
+              <img src="" alt="" />
+            </div>
+          </div>
+        </div>
+        <!-- ================================Top Ended============================ -->
+        <div class="recent-updates">
+          <h2>Recent Updates</h2>
+          <div class="updates">
+            <div class="update">
+              <div class="profile-photo">
+                <img src="" alt="" />
+              </div>
+              
+               
+            <div class="message">
+              <% if (user.role !== 'operator' && user.role !== 'guest' ) { %>
+              <% notifications.forEach(function(notification) { %>
+              <div class="notify" style="display: flex;">
+                <p><%= notification.message %></p>
+                <div class="form" style="display: flex;">
+                  <form action="/accept-registration/<%= notification._id %>" method="post">
+                    <button style="padding: 3px;margin-right: 3px;margin-left: 3px;
+                    background-color: #dc143c;font-weight: 600;border: 1px solid #000;border-radius: 3px;" type="submit">Accept</button>
+                  </form>
+                  <form action="/reject-registration/<%= notification._id %>" method="post">
+                    <button style="padding: 3px;background-color: #dc143c;font-weight: 600;
+                    border: 1px solid #000;border-radius: 3px;"  type="submit">Reject</button>
+                  </form>
+                </div>
+              </div>
+
+              <% }); %>
+              <% } else { %>
+                <h1>WELCOME TO PENTASPORTS</h1>
+                <p>SORRY! YOU ARE NOT ALLOWED TO SEE THIS PAGE YOUR ACCESS ONLY IN (<span class="material-symbols-outlined">
+                  database
+                  </span> NEWARRIVALS)  &  (<span class="material-symbols-outlined">add</span> ADDITEMS) </p>
+            <% } %>
+            </main>
+            </div>
+           
+              </div>
+              </div>
+              </div>
+             
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      const sideMenu = document.querySelector("aside");
+      const menuBtn = document.querySelector("#menu-btn");
+      const closeBtn = document.querySelector("#close-btn");
+      const themeToggler = document.querySelector(".theme-toggler");
+      menuBtn.addEventListener("click", () => {
+        sideMenu.style.display = "block";
+      });
+      closeBtn.addEventListener("click", () => {
+        sideMenu.style.display = "none";
+      });
+
+      themeToggler.addEventListener("click", () => {
+        document.body.classList.toggle("dark-theme-variables");
+        themeToggler
+          .querySelector("span:nth-child(1)")
+          .classList.toggle("active");
+        themeToggler
+          .querySelector("span:nth-child(2)")
+          .classList.toggle("active");
+      });
+
+      // orders.forEach(order =>{
+      //   const tr = document.createElement('tr');
+      //   const trContent =`
+      //            <td>${order.productname}</td>
+      //   `
+      // })
+      // tr.innterHTML =trContent;
+      // document.querySelector('table tbody').appendChild(tr);
+
+      $("#change-status").change(function(){
+       var selectedRole = $(this).val(); 
+       if(selectedRole === "All"){
+         $('table > tbody  > tr').each(function() {
+           $(this).show();
+         });
+       } else {
+         $('table > tbody  > tr').each(function() {
+           var role = $(this).data('role');
+           if(role !== selectedRole){
+             $(this).hide();
+           } else {
+             $(this).show();
+           }
+         });
+       }
+     });
+     
+     $(".change-role-btn").click(function() {
+ var roleOptions = $(this).next(".role-options");
+ if (roleOptions.is(":visible")) {
+  roleOptions.hide();
+ } else {
+  roleOptions.show();
+ }
+});
+
+
+     
+     $(".save-role-btn").click(function() {
+       var userId = $(this).data('id');
+       var newRole = $("input[name='role-" + userId + "']:checked").val();
+       
+       // Send a request to the server to update the user role
+       $.ajax({
+         url: '/update-role/' + userId,
+         method: 'POST',
+         data: { role: newRole },
+         success: function() {
+           alert('Role updated');
+         }
+       });
+     });
+     //delete the user data codee
+     $(".delete-btn").click(function() {
+       var userId = $(this).data('id');
+       var isChecked = $(".delete-checkbox[data-id='" + userId + "']").prop('checked');
+       if (isChecked) {
+         // Send a request to the server to delete the user
+         $.ajax({
+           url: '/delete-user/' + userId,
+           method: 'POST',
+           success: function() {
+             alert('User deleted');
+           }
+         });
+       } else {
+         alert('Please check the checkbox before deleting');
+       }
+     });
+    </script>
+    <script>
+      document.getElementById('submit-date').addEventListener('click', function() {
+         const selectedDate = document.getElementById('date-input').value;
+         window.location.href = `/adminsystem/webtraffic?date=${selectedDate}`;
+      });
+     </script>
+  </body>
+</html>

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         .discount-label {
+      position: absolute;
+      top: 1%;
+      right: -7%;
+      background-color: darkgoldenrod;
+      color: white;
+      z-index: 1;
+      rotate: 46deg;
+      overflow: hidden;
+      border-radius: 0px 0px 5px 5px;
+      padding: 11px 25px;
+      font-size: 14px;
+    }
+    .old_price {
+      font-size: 15pxx;
+      font-size: 19px;
+      font-weight: 600;
+      color: #3b3a3a;
+      line-height: 1.2;
+      position: relative;
+      text-decoration: line-through;
+}
+
+    .price {
+      font-size: 15pxx;
+      font-size: 19px;
+      font-weight: 600;
+      color: #000;
+      line-height: 1.2;
+    }
+    .item[data-row] {
+  display: none;
+}
+
+.item[data-row="1"] {
+  display: block;
+}
+.button-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.centered-button {
+  display: inline-block; /* Changed from block to inline-block */
+  margin: 10px; /* Adjusted for spacing between buttons */
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: darkgoldenrod;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.centered-button:hover {
+  background-color: darkgoldenrod;
+}
+@media only screen and (max-width: 1024px) {
+    .item{
+        width: 44% !important;
+    }
+}
+    @media only screen and (max-width: 768px) {
+
+      .item{
+        width: 35% !important;
+        margin: 0px;
+        padding: 10px 10px 10px 10px;
+      }
+      .item img{
+        width: 150px;
+      }
+      .item h2 {
+    margin: 10px 0px 6px;
+    padding-bottom: 3px;
+  
+}
+      .listProduct {
+          row-gap: 20px !important;
+      }
+      .group {
+        padding: 30px 0px !important;
+      }
+    }
+    @media only screen and (max-width: 480px) {
+      .item{
+        width: 45% !important;
+        padding: 10px 10px 17px 10px !important;
+        border-radius: 10px !important;
+      }
+      .product-cart-sec .container {
+    width: 100% !important;
+}
+      .item h2 {
+    font-size: 13px !important;
+    margin: 13px 0px 5px !important;
+    padding-bottom: 2px !important;
+    
+}
+.item img{
+        width: 170px !important;
+      }
+      .price{
+        font-weight: 300px !important;
+        font-size: 11px !important;
+      }
+    }
+    @media only screen and (max-width: 300px) {
+     .item{
+      width: 26% !important;
+      padding: 4px 5px 8px 5px !important;
+      border-radius: 5px !important;
+
+     }
+     .item img{
+      width: 60px !important;
+      margin: 1px 0px 0px !important;
+     }
+     
+      .item h2{
+      font-size: 8px !important;
+     }
+     .price {
+    font-size: 11px !important;
+    font-weight: 300 !important;
+}
+
+    }
+
+    </style>
+</head>
+<body>
+    <section class="product-cart-sec">
+        
+        <div class="container">
+            <h1>RELATED PRODUCTS</h1>
+            <div class="group group-one">
+              <div class="listProduct" id="productList">
+                <% let rowCounter = 0; %>
+                <% products.slice().reverse().forEach((product, index) => { %>
+                  <% if (index % 3 === 0) { rowCounter++; } %>
+                  <div class="item" data-row="<%= rowCounter %>">
+                    <% if (product.discount) { %>
+                      <span class="discount-label"><%= product.discount %>%OFF</span>
+                    <% } %>
+                    <a href="/product/<%= product._id %>">
+                      <img src="<%= product.image.replace('/public', '') %>" alt="" />
+                    </a>
+                    <div class="card_detail">
+                      <h2><%= product.title.split(' ').slice(0, 3).join(' ') %></h2>
+                      <span class="price" id="price"><%= product.price.toLocaleString() %></span><br />
+                      <% if (product.discount) { %>
+                        <span class="old_price" id="old_price"><%= product.old_price %></span>
+                      <% } %>
+                    </div>
+                  </div>
+                <% }); %>
+              </div>
+            </div>
+            <div class="button-container">
+                <button id="showMoreBtn" class="centered-button">Show More</button>
+                <button id="showLessBtn" class="centered-button">Show Less</button>
+              </div>
+          </div>
+      </section>
+     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+  const showMoreBtn = document.getElementById('showMoreBtn');
+  const showLessBtn = document.getElementById('showLessBtn');
+  let currentMaxRow = 2; // Start with 2 rows visible
+  const totalRows = Math.ceil(document.querySelectorAll('.item').length / 3); // Assuming 3 items per row
+  showLessBtn.style.display = 'none'; // Initially hide the "Show Less" button if only 2 rows are shown
+
+  showMoreBtn.addEventListener('click', function() {
+    currentMaxRow += 2; // Show next two rows
+    updateRowsVisibility(currentMaxRow);
+
+    if (currentMaxRow >= totalRows) {
+      showMoreBtn.style.display = 'none';
+    }
+    showLessBtn.style.display = 'inline-block'; // Show "Show Less" button when more than 2 rows are visible
+  });
+
+  showLessBtn.addEventListener('click', function() {
+    currentMaxRow -= 2; // Hide the last two rows
+    updateRowsVisibility(currentMaxRow);
+
+    if (currentMaxRow <= 2) { // Adjusted to 2 for initial two rows
+      showLessBtn.style.display = 'none';
+    }
+    showMoreBtn.style.display = 'inline-block';
+  });
+
+  function updateRowsVisibility(maxRow) {
+    document.querySelectorAll('.item').forEach(item => {
+      const itemRow = parseInt(item.getAttribute('data-row'), 10);
+      item.style.display = itemRow <= maxRow ? 'block' : 'none';
+    });
+  }
+});
+     </script>
+</body>
+</html>

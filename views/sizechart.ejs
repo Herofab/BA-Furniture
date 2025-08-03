@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Size Chart</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<style>
+    .salesmobie{
+    display: none;
+}
+
+@media only screen and (max-width: 768px) {
+.salesmobie{
+text-align: center;
+background-color: brown;
+color: #fff;
+padding: 5px;
+display: block;
+}
+
+}
+.term{
+    width: 80%;
+    margin: 10px auto;
+    border: 2px solid #000;
+    border-radius: 25px;
+}
+.termhead{
+    width: 95%;
+    margin: 10px auto;
+    text-align: center;
+}
+.termbody{
+    width: 86%;
+    margin: 10px auto;
+    color: gray;
+}
+
+.termheadbody{
+    width: 86%;
+    margin: 10px auto;
+    padding: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+}
+.container1{
+   
+    width: 100px;
+    overflow: hidden;
+    border-radius: 25px;
+    margin-bottom: 10px;
+}
+.container img{
+    object-fit: cover;
+    background-repeat: no-repeat;
+}
+.card{
+    margin: 7px;
+}
+@media only screen and (max-width: 480px) {
+    .card{
+    width: 90% !important;
+}
+}
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,500,800);
+figure.snip1200 {
+  font-family: 'Raleway', Arial, sans-serif;
+  position: relative;
+  overflow: hidden;
+  margin: 10px;
+  min-width: 220px;
+  max-width: 310px;
+  max-height: 310px;
+  width: 100%;
+  background: #000000;
+  color: #ffffff;
+  text-align: center;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+  font-size: 16px;
+}
+figure.snip1200 * {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all 0.45s ease-in-out;
+  transition: all 0.45s ease-in-out;
+}
+figure.snip1200 img {
+  max-width: 100%;
+  position: relative;
+  opacity: 0.9;
+}
+figure.snip1200 figcaption {
+  position: absolute;
+  top: 45%;
+  left: 7%;
+  right: 7%;
+  bottom: 45%;
+  border: 1px solid white;
+  border-width: 1px 1px 0;
+}
+figure.snip1200 .heading {
+  overflow: hidden;
+  -webkit-transform: translateY(50%);
+  transform: translateY(50%);
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+figure.snip1200 h2 {
+  display: table;
+  margin: 0 auto;
+  padding: 0 10px;
+  position: relative;
+  text-align: center;
+  width: auto;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+figure.snip1200 h2 span {
+  font-weight: 800;
+}
+figure.snip1200 h2:before,
+figure.snip1200 h2:after {
+  position: absolute;
+  display: block;
+  width: 1000%;
+  height: 1px;
+  content: '';
+  background: white;
+  top: 50%;
+}
+figure.snip1200 h2:before {
+  left: -1000%;
+}
+figure.snip1200 h2:after {
+  right: -1000%;
+}
+figure.snip1200 p {
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  position: absolute;
+  width: 100%;
+  padding: 0 20px;
+  margin: 0;
+  opacity: 0;
+  line-height: 1.6em;
+  font-size: 0.9em;
+}
+figure.snip1200 a {
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  position: absolute;
+  z-index: 1;
+}
+figure.snip1200:hover img,
+figure.snip1200.hover img {
+  opacity: 0.25;
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+figure.snip1200:hover figcaption,
+figure.snip1200.hover figcaption {
+  top: 7%;
+  bottom: 7%;
+}
+figure.snip1200:hover p,
+figure.snip1200.hover p {
+  opacity: 1;
+  -webkit-transition-delay: 0.35s;
+  transition-delay: 0.35s;
+}
+
+</style>
+<body>
+    <%- include('component/navbar') %>
+    <!-- Header Section start -->
+    <%- include('component/mobilenav') %>
+     <!-- Slider Section start-->
+     <div class="salesmobie">
+        Get 15% off
+            </div>
+
+            <section class="term">
+                <div class="termhead">
+                    <h1>Size Charts</h1>
+                    
+                </div>
+                <!-- <div class="termbody" style="display: flex; 
+                flex-wrap: wrap;justify-content: center;">
+
+                      <figure class="snip1200">
+                        <img src="https://images.unsplash.com/photo-1509442233604-131901ff8d40?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="sq-sample27" />
+                        <figcaption>
+                          <p>Getting the right fit for your
+                            clothes can be tricky. Let our PUMA size guide help you. </p>
+                          <div class="heading">
+                            <h2><span> PUMA</span></h2>
+                          </div>
+                        </figcaption>
+                        <a href="/sizecharts/pumachart"></a>
+                      </figure>
+                      <figure class="snip1200 hover">
+                        <img src="https://images.unsplash.com/photo-1625515922308-56dcaa45351c?q=80&w=1472&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
+                        <figcaption>
+                          <p>Getting the right fit for your
+                            Shoes can be tricky. Let our SKECHER size guide help you.</p>
+                          <div class="heading">
+                            <h2><span> SKECHERS</span></h2>
+                          </div>
+                        </figcaption>
+                        <a href="/sizecharts/skecherchart"></a>
+                      </figure>
+                      <figure class="snip1200">
+                        <img src="https://images.unsplash.com/photo-1626424561547-d74dc857a267?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="sq-sample32" />
+                        <figcaption>
+                          <p>Getting the right fit for your
+                            Shoes can be tricky. Let our CROCS size guide help you.</p>
+                          <div class="heading">
+                            <h2><span>CROCS</span></h2>
+                          </div>
+                        </figcaption>
+                        <a href="/sizecharts/crocschart"></a>
+                      </figure>
+                      <figure class="snip1200">
+                        <img src="https://images.unsplash.com/photo-1542838775-551ba96569a8?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="sq-sample32" />
+                        <figcaption>
+                          <p>Getting the right fit for your
+                            Shoes can be tricky. Let our TIMBERLAND size guide help you.</p>
+                          <div class="heading">
+                            <h2><span>TIMBERLAND</span></h2>
+                          </div>
+                        </figcaption>
+                        <a href="/sizecharts/timberchart"></a>
+                      </figure>
+                      <figure class="snip1200">
+                        <img src="https://images.unsplash.com/photo-1575657692453-b8452c5fb3df?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
+                        <figcaption>
+                          <p>Getting the right fit for your
+                            Shoes can be tricky. Let our MERRELL size guide help you.</p>
+                          <div class="heading">
+                            <h2><span>MERRELL</span></h2>
+                          </div>
+                        </figcaption>
+                        <a href="/sizecharts/merrellchart"></a>
+                      </figure>
+                      <figure class="snip1200">
+                        <img src="https://images.unsplash.com/photo-1605812860427-4024433a70fd?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
+                        <figcaption>
+                          <p>Getting the right fit for your
+                            Shoes can be tricky. Let our UGG size guide help you.</p>
+                          <div class="heading">
+                            <h2><span>UGG</span></h2>
+                          </div>
+                        </figcaption>
+                        <a href="/sizecharts/uggchart"></a>
+                      </figure>
+                      <figure class="snip1200">
+                        <img src="https://www.heydude.com/cdn/shop/files/2024_Heydude_WallyWendySlip_March_Site_WallySlipTan_Chase_Hero_Mobile.jpg?v=1709194039&width=600" />
+                        <figcaption>
+                          <p>Getting the right fit for your
+                            Shoes can be tricky. Let our HEYDUDE size guide help you.</p>
+                          <div class="heading">
+                            <h2><span>HEYDUDE</span></h2>
+                          </div>
+                        </figcaption>
+                        <a href="/sizecharts/heydudechart"></a>
+                      </figure>
+                      <figure class="snip1200">
+                        <img src="https://media1.popsugar-assets.com/files/thumbor/iNEokXH8vwYqQaMh6tTQspAHTFs/0x2143:5464x7607/fit-in/2048xorig/filters:format_auto-!!-:strip_icc-!!-/2021/05/26/747/n/1922564/935ac0b560ae7d9f7d28a1.80183593_/i/how-to-style-reef-sandals.jpg" />
+                        <figcaption>
+                          <p>Getting the right fit for your
+                            Shoes can be tricky. Let our REEF size guide help you.</p>
+                          <div class="heading">
+                            <h2><span>REEF</span></h2>
+                          </div>
+                        </figcaption>
+                        <a href="/sizecharts/reefchart"></a>
+                      </figure>
+                </div> -->
+                <div class="termhead">
+                    <h1>Social Accounts</h1>
+
+                </div>
+                <div class="termheadbody">
+                    <div class="container1">
+                     <a href="https://www.facebook.com/PentaSports.pk"><img src="/images/facebook.png" alt=""></a>
+                    </div>
+                    <div class="container1">
+                     <a href="https://www.instagram.com/penta.pk/"><img src="/images/instgaram.jpg" alt=""></a>
+                    </div>
+                    <div class="container1">
+                     <a href="https://api.whatsapp.com/send/?phone=923338420501&text&type=phone_number&app_absent=0"><img src="/images/whastapp.png" alt=""></a>
+                    </div>
+                    <div class="container1">
+                      <a href="https://www.youtube.com/@pentapakistan"><img src="/images/youtube.png" alt=""></a>
+                     </div>
+                </div>
+            </section>
+
+             <!-- Footer Section -->
+    <%- include('component/footer') %>
+    <script>
+        /* Demo purposes only */
+  $(".hover").mouseleave(
+    function () {
+      $(this).removeClass("hover");
+    }
+  );
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+</body>
+</html>

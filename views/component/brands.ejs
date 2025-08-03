@@ -1,0 +1,9 @@
+<%if (brand) { %>
+  <h5><%= brand.toUpperCase() %></h5>
+  <% if(gender && gender === 'kids') { %>
+
+    <h5>KIDS </h5>
+      <% } %>
+<% } else {%>
+              <h5>All Products</h5>
+<% } %>

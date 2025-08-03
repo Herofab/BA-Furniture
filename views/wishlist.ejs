@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Wishlist</title>
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800&family=Montserrat:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Oswald:wght@200;300;400;500;600&family=Shippori+Antique&display=swap"
+    rel="stylesheet" />
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+  <link rel="stylesheet" href="/css/index.css" />
+  <link rel="stylesheet" href="/css/wishlist.css" />
+</head>
+<style>
+    .show-img img {
+    width: 100%;
+    object-fit: cover;
+    height: 120px;
+}
+  @media only screen and (max-width: 1024px) {
+
+    .wishlist-sec .container{
+      width: 70%;
+    }
+  }
+  @media only screen and (max-width: 780px) {
+    .wishlist-sec .container{
+      width: 80%;
+    }}
+  @media only screen and (max-width: 650px) {
+    .wishlist-sec .container{
+      width: 85%;
+    }
+    .show-img img {
+    width: 95%;
+    object-fit: cover;
+    height: 100px;
+}
+
+  }
+  @media only screen and (max-width: 480px) {
+    .wishlist-sec .container{
+      width: 90%;
+    }
+    .show-img img {
+    width: 100%;
+    object-fit: cover;
+    height: 100px;
+}
+#item-design {
+    border: 1px solid rgb(153, 151, 151);
+    display: flex;
+    gap: 7%;
+    height: 250px;
+    width: 227%;
+    border-radius: 5px;
+    color: black;
+    margin-bottom: 20px;
+}
+
+  }
+</style>
+
+<body>
+  
+
+  <!--------------------------Start Navbar ----------------------------->
+  <%- include('component/navbar') %>
+  <%- include('component/mobilenav') %>
+    <!----------------------End Of Navbar----------------------------->
+   
+    <!-------- Wishlist Section ---------->
+    <section class="wishlist-sec">
+      <div class="container">
+        <div class="show-heading">
+          <h2>my wishlist</h2>
+          <span> 1 items</span>
+        </div>
+        <% wishlist.forEach(function(item) { %>
+          <div class="show">
+            <div class="show-img">
+              <img  src="<%= item.image.replace('/public', '') %>" alt="" />
+            </div>
+            <div class="text">
+              <div class="edit" style="display: flex;justify-content: space-between;">
+                <h2><%= item.title %></h2>
+                <form action="/delete-from-wishlist" method="POST">
+                  <input type="hidden" name="productId" value="<%= item._id %>">
+                  <button type="submit" style="background-color: transparent; border: none;"><i class="far fa-trash-alt"></i></button>
+                </form>
+              </div>
+              <div class="price">
+                <form action="/add-to-cart" method="POST">
+                  <p>
+                    <span class="info-span">Size:</span>
+                    <select name="selectedSize" required>
+                      <% if (item.size1) { %><option value="<%= item.size1 %>"><%= item.size1 %></option><% } %>
+                      <% if (item.size2) { %><option value="<%= item.size2 %>"><%= item.size2 %></option><% } %>
+                      <% if (item.size3) { %><option value="<%= item.size3 %>"><%= item.size3 %></option><% } %>
+                      <% if (item.size4) { %><option value="<%= item.size4 %>"><%= item.size4 %></option><% } %>
+                      <% if (item.size5) { %><option value="<%= item.size5 %>"><%= item.size5 %></option><% } %>
+                      <% if (item.size6) { %><option value="<%= item.size6 %>"><%= item.size6 %></option><% } %>
+                      <% if (item.size7) { %><option value="<%= item.size7 %>"><%= item.size7 %></option><% } %>
+                      <% if (item.size8) { %><option value="<%= item.size8 %>"><%= item.size8 %></option><% } %>
+                      <% if (item.size9) { %><option value="<%= item.size9 %>"><%= item.size9 %></option><% } %>
+                      <% if (item.size10) { %><option value="<%= item.size10 %>"><%= item.size10 %></option><% } %>
+                      <% if (item.size11) { %><option value="<%= item.size11 %>"><%= item.size11 %></option><% } %>
+                      <% if (item.size12) { %><option value="<%= item.size12 %>"><%= item.size12 %></option><% } %>
+                      <!-- Add other sizes as options here -->
+                    </select>
+                  </p>
+                  <p>
+                    <span class="info-span">Quantity:</span>
+                    <input type="number" name="quantity" value="1" min="1" required>
+                  </p>
+                  <p><span class="info-span">Price:</span><%= item.price %></p>
+                  <p><span class="info-span">Style Number:</span><%= item.product_code %></p>
+                  <input type="hidden" name="productId" value="<%= item._id %>">
+                  <input type="hidden" name="color" value="<%= item.selectedColor %>"> <!-- Assuming color is stored in item -->
+                  <button type="submit" class="submit">Add To Cart</button>
+                </form>
+             
+              </div>
+            </div>
+          </div>
+        <% }); %>
+      </div>
+    </section>
+
+    <!--------------------------Start footer ----------------------------->
+    <%- include('component/footer') %>
+
+    <script type="module" src="/js/wishlist.js"></script>
+    <script>
+      // Inside a script tag in wishlist.ejs
+      window.onload = function () {
+        setInterval(function () {
+          fetch('/getWishlistCount')
+            .then(response => response.json())
+            .then(data => {
+              document.getElementById('wishlist_item').innerText = data.count;
+            });
+        }, 1000); // Update every second
+      };
+
+      
+document.querySelectorAll('.remove-from-wishlist-btn').forEach(button => {
+    button.addEventListener('click', function() {
+        const productId = this.getAttribute('data-product-id');
+        fetch('/delete-from-wishlist', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                // Include CSRF token if needed
+            },
+            body: JSON.stringify({ productId: productId }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            if(data.success) {
+                // Decrement the wishlist item count
+                const itemCountElement = document.getElementById('wishlistItemCount');
+                let currentCount = parseInt(itemCountElement.textContent);
+                itemCountElement.textContent = currentCount - 1;
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('An error occurred.');
+        });
+    });
+});
+
+    </script>
+</body>
+
+</html>

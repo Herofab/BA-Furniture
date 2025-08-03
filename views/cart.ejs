@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Cart</title>
+  <link rel="stylesheet" href="/css/cart.css " />
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+</head>
+<style>
+
+ #cart-items {
+    display: flex;
+    margin-top: 5%;
+    gap: 15%;
+    color: black;
+    justify-content: end;
+}
+#item-design {
+    justify-content: space-between;
+}
+@media only screen and (max-width: 1020px) {
+  #item-design {
+    height: 250px;
+    width: 120%;
+
+}
+  #discount-price {
+    font-size: 19px;
+    
+}
+}
+    @media only screen and (max-width: 780px) {
+      #cart-items {
+    display: flex;
+    flex-direction: column;
+    margin-top: 5%;
+    gap: 15%;
+    color: black;
+    justify-content: end;
+}
+#item-design {
+    display: flex;
+    gap: 7%;
+    height: 250px;
+    width: 213%;
+    margin-bottom: 20px;
+}
+#item-image {
+    height: 38%;
+    width: 120%;
+    padding: 8px;
+}
+#discount-price {
+    font-size: 16px;
+}
+#cart-item-price {
+    width: 20%;
+}
+#cart-item-details h3 {
+    font-size: 16px;
+}
+#cart-details {
+    width: 90%;
+}
+}
+    @media only screen and (max-width: 480px) {
+      #cart-items {
+    display: flex;
+    flex-direction: column;
+    margin-top: 5%;
+    gap: 15%;
+    color: black;
+    justify-content: end;
+}
+#item-design {
+    display: flex;
+    gap: 7%;
+    height: 250px;
+    width: 227%;
+    margin-bottom: 20px;
+}
+#item-image {
+    height: 38%;
+    width: 120%;
+    padding: 8px;
+}
+#discount-price {
+    font-size: 16px;
+}
+#cart-item-price {
+    width: 20%;
+}
+#cart-item-details h3 {
+    font-size: 16px;
+}
+#cart-details {
+    width: 90%;
+}
+}
+</style>
+
+
+<body>
+  <%- include('component/navbar') %>
+  <%- include('component/mobilenav') %>
+  <div id="container">
+    <div class="navbar"></div>
+    <div id="sub">
+      <h1>MY SHOPPING CART<span id="cart-count">(<%= itemCount ? itemCount : 0 %>)</span></h1>
+     
+
+      <div id="cart-items" >
+        <div class="wrapper">
+          <!-- Checkout form for all selected products -->
+          <!-- <form action="/checkout" method="POST"> -->
+            <% cartItems.forEach(function(item, index) { %>
+              <div id="item-design" style="border-radius: 10px;padding-right:5px ;">
+                <div id="cart-image">
+                  <img
+                    id="item-image"
+                    src="<%= item.image.replace('/public', '') %>"
+                  />
+                </div>
+                <div id="cart-item-details">
+                  <h3><%= item.title.split(' ').slice(0, 2).join(' ') %></h3>
+                  <p class="black" >Quantity: <span class="myt" style="padding-left: 5px;padding-right: 5px;"> <%= item.quantity %> </span></p>
+                  <p class="black" >Size: <span class="myt"><%= item.selectedSize %> </span></p>
+                  <p class="black" >Product_Code: <span ><%= item.product_code %> </span></p>
+                
+                </div>
+                <div id="cart-item-price">
+                  <p id="discount-price" class="price"><%= item.price %></p>
+                 
+                  <div id="cart-icons">
+                    <button type="button" class="remove-from-cart-btn" data-product-id="<%= item._id %>" style="background-color: transparent; border: none;">
+                        <i class="far fa-trash-alt"></i>
+                    </button>
+                </div>
+                </div>
+              </div>
+              <% }); %>
+          
+              <!-- </form> -->
+        </div>
+        <div id="cart-details">
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+          <div id="Promocode">
+            <a id="js-apply-promo" href="#">Apply a Promo Code</a>
+            <div id="js-promo-box" class="promo-box">
+              <input type="text" />
+              <button id="promo-button" onclick="">Apply</button>
+            </div>
+          </div>
+          <div id="prices">
+            <p class="sub-total">
+               SubTotal<span class="price-span"><%= total.toLocaleString() %></span>
+            </p>
+           
+            <p class="sub-total">
+               Shipping costs<span class="price-span Shipping"> <%= shipping.toLocaleString() %></span>
+            </p>
+            <div class="line"></div>
+           </div>
+           
+           <p class="grand-total">
+            <b>Grand Total</b> <b> <%= total.toLocaleString() %></b>
+           </p>
+
+          <div id="cart-checkout">
+            <a href="/orderproceeding/checkout" id="checkout">CHECKOUT</a>
+          </div>
+        </div>                                                                                                                                                                                 
+      </div>
+    </div>
+  </div>
+ 
+  </div>
+  <%- include('component/footer') %>
+</body>
+
+</html>
+<script src="/js/cart.js"></script>
+<script type="module">
+  import navbar from "./Components/navbar.js";
+  import footer from "./Components/footer.js";
+  const DOM_footer = document.querySelector("#footer");
+  DOM_footer.innerHTML = footer();
+  const DOM_navbar = document.querySelector(".navbar");
+  DOM_navbar.innerHTML = navbar();
+</script>
+<script>
+ 
+
+  $("#js-apply-promo").on("click", function () {
+    $("#js-promo-box").fadeToggle();
+  });
+</script>
+<script>
+  window.onload = function() {
+      var prices = document.getElementsByClassName('price');
+      for (var i = 0; i < prices.length; i++) {
+          var price = parseFloat(prices[i].textContent);
+          prices[i].textContent = new Intl.NumberFormat().format(price);
+      }
+  };
+
+  // Example JavaScript code to update the cart item count
+  document.querySelectorAll('.remove-from-cart-btn').forEach(button => {
+    button.addEventListener('click', function() {
+        const productId = this.getAttribute('data-product-id');
+        fetch('/delete-from-cart', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                // Include CSRF token if needed
+            },
+            body: JSON.stringify({ productId: productId }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            if(data.success) {
+                // Reload the page after successful deletion
+                window.location.reload();
+            } else {
+                // Handle failure (optional)
+                alert('Failed to delete the item.');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('An error occurred.');
+        });
+    });
+});
+  </script>

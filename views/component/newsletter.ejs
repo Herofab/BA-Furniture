@@ -1,0 +1,193 @@
+<!-- newsletter.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Subscribe to Our Newsletter</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+  <style>
+ .newsletter {
+  width: 50%;
+  height: 700px;
+  z-index: 9999;
+  background: url("https://decorstudio.pk/cdn/shop/products/FB_IMG_1625428510451.jpg?v=1625429503") no-repeat center center/cover;
+  justify-content: center;
+  align-items: stretch;
+  position: fixed; /* Changed to fixed for centering */
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Centering trick */
+  display: none; /* Initially hidden */
+  grid-template-rows: auto auto auto; /* Added */
+  color: #fff;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  color: #000 !important;
+}
+
+.newsletter h1 {
+  text-align: center;
+  color: #fff;
+}
+
+.newsletter form {
+    justify-self: center;
+    align-self: center;
+    margin: 131px auto;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+}
+
+form input {
+    width: 40%;
+    line-height: 35px;
+    border: none;
+    border-bottom: 1px solid #fff;
+    padding: 3px;
+    margin-bottom: 10px;
+    background-color: transparent;
+    color: #fff;
+}
+form input:focus{
+  
+    background-color:aliceblue;
+}
+
+form button {
+  line-height: 30px;
+    width: 20%;
+    background: goldenrod;
+    color: #fff;
+    font-weight: 600;
+    border: 2px outset goldenrod;
+    cursor: pointer;
+    border: none;
+    border-radius: 2px
+}
+input[type="email"] {
+  padding-left: 2px; /* Adjust padding to accommodate the icon */
+  color: #fff;
+}
+
+.newsletter form .material-symbols-outlined {
+  position: absolute;
+  left: 5px; /* Adjust the position of the icon */
+  top: 50%;
+  transform: translateY(-50%);
+}
+@media (max-width: 1020px) {
+    form button{
+        width: 37% !important;
+    }
+}
+@media (max-width: 768px) {
+    form button{
+        width: 40% !important;
+    }
+    .newsletter{
+      width: 54%;
+    height: 380px;
+    
+      background: url("https://decorstudio.pk/cdn/shop/products/FB_IMG_1625428510451.jpg?v=1625429503") no-repeat center center/cover;
+    }
+    .newsletter h1{
+      display: none;
+    }
+}
+@media (max-width: 480px) {
+    form button{
+        width: 28% !important;
+        font-size: 12px;
+
+    }
+    .newsletter{
+        width: 90%;
+    }
+    .newsletter form{
+        width: 80%;
+    }
+    form input {
+    width: 56%;
+    line-height: 20px;
+    padding: 3px;
+    font-size: 12px;
+}
+}
+@media (max-width: 320px) {
+  .newsletter {
+    width: 100%;
+    height: 318px;
+        top: 45%;
+    }
+    form input {
+    width: 56%;
+    line-height: 20px;
+    padding: 3px;
+    font-size: 12px;
+}
+form button{
+        width: 28% !important;
+        font-size: 12px;
+
+    }
+}
+
+
+
+  </style>
+</head>
+<body>
+    <div class="newsletter" id="newsletter">
+        <span class="close" onclick="closeNewsletter()">X</span>
+      
+        <form id="subscribeForm">
+            <input type="email" id="emailInput" placeholder="&#9993; Enter your email">
+
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+      
+     <script>
+     window.onload = function() {
+  document.getElementById('newsletter').style.display = 'block';
+}
+
+function closeNewsletter() {
+  document.getElementById('newsletter').style.display = 'none';
+}
+
+document.getElementById('subscribeForm').addEventListener('submit', async function(event) {
+  event.preventDefault(); // Prevent default form submission
+  const email = document.getElementById('emailInput').value;
+  try {
+    const response = await fetch('/subscribe', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ email })
+    });
+    const data = await response.json();
+    if (response.ok) {
+      alert(data.message); // Show success message
+      closeNewsletter(); // Close newsletter upon successful subscription
+    } else {
+      alert(data.message); // Show error message
+    }
+  } catch (error) {
+    console.error('Error:', error);
+    alert('An error occurred while subscribing.'); // Show error message
+  }
+});
+
+     </script>
+       
+</body>
+</html>

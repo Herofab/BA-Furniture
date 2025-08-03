@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="/css/checkout.css">
+</head>
+<style>
+  
+</style>
+<body>
+    
+<div class="container">
+    <form action="/checkout" method="POST" class="input" > 
+    <div class="checkoutLayout" >
+
+        
+        <div class="returnCart">
+            <a href="/newarrivaldata">Continue Shopping</a>
+            <h1>List Product in Cart</h1>
+            <div class="list">
+                <% cartItems.forEach(function(item, index) { %>
+                <div class="item">
+                    <img src="<%= item.image.replace('/public', '') %>" alt="<%= item.title %>">
+                    <div class="info">
+                        <div class="name"><%= item.title.split(' ').slice(0, 2).join(' ') %> %></div>
+                       
+                    </div>
+                    <div class="quantity"><%= item.quantity %></div>
+                    <div class="returnPrice">Rs.<%= item.price %></div>
+                    
+                    <input type="hidden" name="products[<%= index %>][id]" value="<%= item._id %>">
+                    <input type="hidden" name="products[<%= index %>][size]" value="<%= item.selectedSize %>">
+                    <input type="hidden" name="products[<%= index %>][color]" value="<%= item.selectedColor %>">
+                    <input type="hidden" name="products[<%= index %>][quantity]" value="<%= item.quantity %>">
+                </div>
+                <% }); %>
+            </div>
+        </div>
+              
+ 
+
+        <div class="right">
+            <h1>Checkout</h1>
+
+            <div class="form">
+                <div class="group">
+                    <label for="name">Full Name</label>
+                    <input type="text" name="name" id="name">
+                </div>
+    
+                <div class="group">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email">
+                </div>
+    
+                <div class="group">
+                    <label for="address1">Address1</label>
+                    <input id="Address1" name="address1" type="text">
+                </div>
+                <div class="group">
+                    <label for="address2">Address2</label>
+                    <input id="Address2" name="address2" type="text">
+                </div>
+    
+                <div class="group">
+                    <label for="country">Postal Code</label>
+                   <input id="pin" name="postal_code" type="number">
+                </div>
+    
+                <div class="group">
+                    <label for="city">City</label>
+                    <select name="city" id="city">
+                        <option value="">Choose..</option>
+                    </select>
+                </div>
+                <div class="group">
+                    <label for="city">Phone</label>
+                    <input id="mob" name="phone" type="text" >
+                </div>
+            </div>
+            <div class="return">
+                <div class="row">
+                    <div>Total Shipping</div>
+                    <div class="totalQuantity"><%= shipping %></div>
+                </div>
+                <div class="row">
+                    <div>Total Price</div>
+                    <div class="totalPrice"><%= total %></div>
+                </div>
+            </div>
+            <button class="buttonCheckout" type="submit" id="placeOrderButton">CHECKOUT</button>
+            </div>
+        
+    </div>
+</div>
+</form>
+
+
+
+
+
+
+<script src="./js/checkout.js"></script>
+<script>
+    // Assuming you have an array of city names like this:
+    const cities = [ "Islamabad", "Ahmed Nager", "Ahmadpur East", "Ali Khan", "Alipur", "Arifwala", "Attock", "Bhera", "Bhalwal", "Bahawalnagar", "Bahawalpur", "Bhakkar", "Burewala", "Chillianwala", "Chakwal", "Chichawatni", "Chiniot", "Chishtian", "Daska", "Darya Khan", "Dera Ghazi", "Dhaular", "Dina", "Dinga", "Dipalpur", "Faisalabad", "Fateh Jhang", "Ghakhar Mandi", "Gojra", "Gujranwala", "Gujrat", "Gujar Khan", "Hafizabad", "Haroonabad", "Hasilpur", "Haveli", "Lakha", "Jalalpur", "Jattan", "Jampur", "Jaranwala", "Jhang", "Jhelum", "Kalabagh", "Karor Lal", "Kasur", "Kamalia", "Kamoke", "Khanewal", "Khanpur", "Kharian", "Khushab", "Kot Adu", "Jauharabad", "Lahore", "Lalamusa", "Layyah", "Liaquat Pur", "Lodhran", "Malakwal", "Mamoori", "Mailsi", "Mandi Bahauddin", "mian Channu", "Mianwali", "Multan", "Murree", "Muridke", "Mianwali Bangla", "Muzaffargarh", "Narowal", "Okara", "Renala Khurd", "Pakpattan", "Pattoki", "Pir Mahal", "Qaimpur", "Qila Didar", "Rabwah", "Raiwind", "Rajanpur", "Rahim Yar", "Rawalpindi", "Sadiqabad", "Safdarabad", "Sahiwal", "Sangla Hill", "Sarai Alamgir", "Sargodha", "Shakargarh", "Sheikhupura", "Sialkot", "Sohawa", "Soianwala", "Siranwali", "Talagang", "Taxila", "Toba Tek", "Vehari", "Wah Cantonment", "Wazirabad", "Badin", "Bhirkan", "Rajo Khanani", "Chak", "Dadu", "Digri", "Diplo", "Dokri", "Ghotki", "Haala", "Hyderabad", "Islamkot", "Jacobabad", "Jamshoro", "Jungshahi", "Kandhkot", "Kandiaro", "Karachi", "Kashmore", "Keti Bandar", "Khairpur", "Kotri", "Larkana", "Matiari", "Mehar", "Mirpur Khas", "Mithani", "Mithi", "Mehrabpur", "Moro", "Nagarparkar", "Naudero", "Naushahro Feroze", "Naushara", "Nawabshah", "Nazimabad", "Qambar", "Qasimabad", "Ranipur", "Ratodero", "Rohri", "Sakrand", "Sanghar", "Shahbandar", "Shahdadkot", "Shahdadpur", "Shahpur Chakar", "Shikarpaur", "Sukkur", "Tangwani", "Tando Adam", "Tando Allahyar", "Tando Muhammad", "Thatta", "Umerkot", "Warah", "Abbottabad", "Adezai", "Alpuri", "Akora Khattak", "Ayubia", "Banda Daud", "Bannu", "Batkhela", "Battagram", "Birote", "Chakdara", "Charsadda", "Chitral", "Daggar", "Dargai", "Darya Khan", "dera Ismail", "Doaba", "Dir", "Drosh", "Hangu", "Haripur", "Karak", "Kohat", "Kulachi", "Lakki Marwat", "Latamber", "Madyan", "Mansehra", "Mardan", "Mastuj", "Mingora", "Nowshera", "Paharpur", "Pabbi", "Peshawar", "Saidu Sharif", "Shorkot", "Shewa Adda", "Swabi", "Swat", "Tangi", "Tank", "Thall", "Timergara", "Tordher", "Awaran", "Barkhan", "Chagai", "Dera Bugti", "Gwadar", "Harnai", "Jafarabad", "Jhal Magsi", "Kacchi", "Kalat", "Kech", "Kharan", "Khuzdar", "Killa Abdullah", "Killa Saifullah", "Kohlu", "Lasbela", "Lehri", "Loralai", "Mastung", "Musakhel", "Nasirabad", "Nushki", "Panjgur", "Pishin valley", "Quetta", "Sherani", "Sibi", "Sohbatpur", "Washuk", "Zhob", "Ziarat" ];
+
+    // Get the select element by its ID
+    const citySelect = document.getElementById('city');
+
+    // Clear any existing options
+    citySelect.innerHTML = '';
+
+    // Add the default option
+    citySelect.innerHTML += `<option value="">Choose..</option>`;
+
+
+    // Loop through the array and add each city as an option
+    cities.forEach(city => {
+        const option = document.createElement('option');
+        option.value = city;
+        option.textContent = city;
+        citySelect.appendChild(option);
+    });
+</script>
+</body>
+</html>

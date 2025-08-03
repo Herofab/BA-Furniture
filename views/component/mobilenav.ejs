@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Font-Awesome  -->
+    <!-- Style Sheet -->
+    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
+    <meta
+      http-equiv="Cache-Control"
+      content="no-store, no-cache, must-revalidate"
+    />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
+    <link rel="stylesheet" href="/css/mobilenav.css">
+  </head>
+ 
+  <body>
+    <!-- Header Section start -->
+    <div class="navbar">
+      <a href="/" class="active"
+        ><span class="material-symbols-outlined"> home </span></a
+      >
+      <a href="/wishlist" class="wishlist-link">
+        <span class="material-symbols-outlined"> favorite </span>
+        <div id="wishlistItemCount" class="mob-wishlist-count">
+          <%= wishlistItemCount %>
+        </div>
+      </a>
+      <a href="/cart" class="iconCart-link">
+        <span class="material-symbols-outlined"> shopping_bag </span>
+
+        <div id="cartItemCount" class="mob-cart-count">
+          <%= itemCount ? itemCount : 0 %>
+        </div>
+      </a>
+      <a href="/login"
+        ><span class="material-symbols-outlined"> person </span></a
+      >
+      <a href="#" id="showFullscreenDiv"
+        ><span class="material-symbols-outlined"> more_vert </span></a
+      >
+    </div>
+
+    <!-- Full-screen Div -->
+    <!-- Full-screen Div -->
+    <div id="fullscreenDiv" class="fullscreen-div">
+      <!-- Search Bar -->
+      <div class="search-container">
+        <input type="text" placeholder="Search..."  onkeypress="search(event)" id="fullscreenSearch" />
+        <!-- <button id="searchButton"><span class="material-symbols-outlined">search</span></button> -->
+      </div>
+
+
+      <!-- Grid Container -->
+      <div class="grid-container">
+        <a href="#" id="menLink"><div class="grid-item">BEDS</div></a>
+        <a href="#" id="womenLink"><div class="grid-item">SOFA SETS</div></a>
+        <a href="#" id="kidsLink"><div class="grid-item">SERVING TABLES</div></a>
+        <a href="#" id="brandLink"><div class="grid-item">DESIGNER JHOOLAS</div></a>
+        <a href="/newarrivaldata"
+          ><div class="grid-item" style="text-align: center">
+            NEW ARRIVALS
+          </div></a
+        >
+        <a href="/alldata?discount=15"
+          ><div class="grid-item">SALES</div></a
+        >
+      </div>
+
+      <!-- Close button (optional) -->
+      <button id="closeFullscreenDiv">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+
+    <!-- Div to be shown/hidden -->
+    <div id="menContent" style="display: none">
+      <button id="closeMenContent">
+        <span class="material-symbols-outlined"> arrow_back_ios </span>
+      </button>
+      
+
+      <!-- Beautiful Divs -->
+      <div class="sub-link" style="margin-top: 50px;" >
+  <a href="/alldata?category=beds" id="mshoes"><div>BEDS</div></a>
+        <a href="" id="mshoes"><div id="menShoesLink">Wedding Beds</div></a>
+        <a href="" id="mshoes"><div id="menClothesLink">Kids Beds</div></a>
+        <a href="/alldata?category=beds&subcategory=king-size" id="mshoes"><div> King Size Beds</div></a>
+      <a href="/alldata?category=beds&subcategory=queen-size" id="mshoes"><div>Queen Size Beds</div></a>
+      <a href="/alldata?category=beds&subcategory=single" id="mshoes"><div>Single Beds</div></a>
+      <a href="/alldata?category=beds&subcategory=carving" id="mshoes"><div>Carving Beds</div></a>
+      <a href="/alldata?category=beds&subcategory=upholstered" id="mshoes"><div>Upholstered Beds</div></a>
+      <a href="/alldata?category=beds&subcategory=storage" id="mshoes"><div>Storage Beds</div></a>
+      <a href="/alldata?category=beds&subcategory=modern" id="mshoes"><div>Modern Beds</div></a>
+      </div>
+    </div>
+
+    <div id="womenContent" style="display: none">
+      <button id="closeWomenContent">
+        <span class="material-symbols-outlined"> arrow_back_ios </span>
+      </button>
+      <!-- Beautiful Divs -->
+      <div class="sub-link" style="margin-top: 50px;" >
+  <a href="/alldata?category=sofa-sets" id="mshoes"><div>SOFA SETS</div></a>
+      <a href="" id="mshoes"><div id="womenShoesLink">Wooden Sofas</div></a>
+      <a href="" id="mshoes"><div id="womenClothesLink">Upholstered Sofas</div></a>
+      <a href="" id="mshoes"><div id="womenAccessoryLink">Sofa Sets</div></a>
+      <a href="" id="mshoes"><div id="kidsClothesLink">Sofa Accessories</div></a>
+
+
+            <a href="/alldata?category=sofa&subcategory=lshape" id="mshoes"><div>L-Shaped Sofas</div></a>
+      <a href="/alldata?category=sofa&subcategory=recliner" id="mshoes"><div>Recliner Sofas</div></a>
+      <a href="/alldata?category=sofa&subcategory=sofacumbed" id="mshoes"><div>Sofa Cum Bed</div></a>
+
+    </div>
+</div>
+    <div id="kidsContent" style="display: none">
+      <button id="closeKidsContent">
+        <span class="material-symbols-outlined"> arrow_back_ios </span>
+      </button>
+      <!-- Beautiful Divs -->
+      <div class="sub-link" style="margin-top: 50px;" >
+  <a href="/alldata?category=servings" id="mshoes"><div>SERVING TABLES</div></a>
+      <a href="" id="mshoes"><div id="kidsShoesLink">Dining Table</div></a>
+      <a href="" id="mshoes"><div id="kidsAccessoryLink">Guest Tables</div></a>
+
+      <a href="/alldata?category=servings&subcategory=console-table" id="mshoes"> <div>Console Tables</div></a>
+      <a href="/alldata?category=servings&subcategory=nesting-table" id="mshoes"> <div>Nesting Tables</div></a>
+      <a href="/alldata?category=servings&subcategory=side-table" id="mshoes"> <div>Side Tables</div></a>
+      <a href="/alldata?category=servings&subcategory=buffet" id="mshoes"> <div>Buffet & Crockery Units</div></a>
+      <a href="/alldata?category=servings&subcategory=trolley" id="mshoes"> <div>Serving Trolleys</div></a>
+
+    </div>
+</div>
+    <div id="brandContent" style="display: none">
+      <button id="closebrandContent">
+        <span class="material-symbols-outlined"> arrow_back_ios </span>
+      </button>
+      <!-- Beautiful Divs -->
+      <div class="sub-link" style="margin-top: 50px;" >
+      <a href="/alldata?category=jhoolas&subcategory=indoor" id="mshoes"><div>Indoor Jhoolas</div></a>
+      <a href="/alldata?category=jhoolas&subcategory=outdoor" id="mshoes"><div>Outdoor Jhoolas</div></a>
+      <a href="/alldata?category=jhoolas&subcategory=royal" id="mshoes"><div>Royal Chinioti Jhoolas</div></a>
+      <a href="/alldata?category=jhoolas&subcategory=hanging-chair" id="mshoes"><div>Hanging Swing Chairs</div></a>
+      <a href="/alldata?category=jhoolas&subcategory=lounge" id="mshoes"><div>Balcony & Lounge Swings</div></a>
+    </div>
+</div>
+
+    <div id="menShoesContent" style="display: none">
+      <button
+        id="closeMenShoesContent"
+        style="background-color: transparent; color: #fff; border: none"
+      >
+        <span class="material-symbols-outlined">arrow_back_ios</span>
+      </button>
+      <a
+        href="/alldata?category=beds&subcategory=wedding"
+        class="beautiful-div"
+        style="background-color: #000; color: #fff"
+        >Wedding Beds</a
+      >
+      <a
+        href="/alldata?category=beds&subcategory=wedding&childsubcategory=chinioti"
+        class="beautiful-div"
+        >Chinioti beds</a
+      >
+      <a
+        href="/alldata?category=beds&subcategory=wedding&childsubcategory=royal"
+        class="beautiful-div"
+        >Royal Beds</a
+      >
+    </div>
+    <div id="menClothesContent" style="display: none">
+      <button
+        id="closeMenClothesContent"
+        style="background-color: transparent; color: #fff; border: none"
+      >
+        <span class="material-symbols-outlined">arrow_back_ios</span>
+      </button>
+      <a
+        href="/alldata?category=beds&subcategory=kids"
+        class="beautiful-div"
+        style="background-color: #000; color: #fff"
+        >Kids Beds</a
+      >
+      <a
+        href="/alldata?category=beds&subcategory=kids&childsubcategory=bunk"
+        class="beautiful-div"
+        >Bunk Beds</a
+      >
+      <a
+        href="/alldata?category=beds&subcategory=kids&childsubcategory=themed"
+        class="beautiful-div"
+        >Themed Beds</a
+      >
+      
+    </div>
+    <!-- ---------------------------------women pages-------------------------------------- -->
+    <div id="womenShoesContent" style="display: none">
+      <button
+        id="closeWomenShoesContent"
+        style="background-color: transparent; color: #fff; border: none"
+      >
+        <span class="material-symbols-outlined">arrow_back_ios</span>
+      </button>
+      <a
+        href="/alldata?category=sofa&subcategory=wooden"
+        class="beautiful-div"
+        style="background-color: #000; color: #fff"
+        >Wooden Sofas</a
+      >
+      <a
+        href="/alldata?category=sofa&subcategory=wooden&childsubcategory=chinioti"
+        class="beautiful-div"
+        >Chinioti Style</a
+      >
+      <a
+        href="/alldata?category=sofa&subcategory=wooden&childsubcategory=carved"
+        class="beautiful-div"
+        >Hand-Carved</a
+      >
+      
+    </div>
+    <div id="womenAccessoryContent" style="display: none">
+      <button
+        id="closeWomenAccessoryContent"
+        style="background-color: transparent; color: #fff; border: none"
+      >
+        <span class="material-symbols-outlined">arrow_back_ios</span>
+      </button>
+      <a
+        href="/alldata?category=sofa&subcategory=sets"
+        class="beautiful-div"
+        style="background-color: #000; color: #fff"
+        >Sofa Set</a
+      >
+      <a
+        href="/alldata?category=sofa&subcategory=sets&childsubcategory=3seater"
+        class="beautiful-div"
+        >3-Seater</a
+      >
+      <a
+        href="/alldata?category=sofa&subcategory=sets&childsubcategory=5seater"
+        class="beautiful-div"
+        >5-Seater</a
+      >
+      <a
+        href="/alldata?category=sofa&subcategory=sets&childsubcategory=7seater"
+        class="beautiful-div"
+        >7-Seater</a
+      >
+    </div>
+    <div id="womenClothesContent" style="display: none">
+      <button
+        id="closeWomenClothesContent"
+        style="background-color: transparent; color: #fff; border: none"
+      >
+        <span class="material-symbols-outlined">arrow_back_ios</span>
+      </button>
+      <a
+        href="/alldata?category=sofa&subcategory=upholstered"
+        class="beautiful-div"
+        style="background-color: #000; color: #fff"
+        >Upholstered Sofas</a
+      >
+      <a
+        href="/alldata?category=sofa&subcategory=upholstered&childsubcategory=fabric"
+        class="beautiful-div"
+        >Fabric Sofas</a
+      >
+      <a
+        href="/alldata?category=sofa&subcategory=upholstered&childsubcategory=velvet"
+        class="beautiful-div"
+        >Velvet Sofas</a
+      >
+      <a
+        href="/alldata?category=sofa&subcategory=upholstered&childsubcategory=leather"
+        class="beautiful-div"
+        >Leather Sofas</a
+      >
+    </div>
+    <!-- ---------------------------------Kids pages-------------------------------------- -->
+    <div id="kidsShoesContent" style="display: none">
+      <button
+        id="closekidsShoesContent"
+        style="background-color: transparent; color: #fff; border: none"
+      >
+        <span class="material-symbols-outlined">arrow_back_ios</span>
+      </button>
+      <a
+        href="/alldata?category=servings&subcategory=dining-table"
+        class="beautiful-div"
+        style="background-color: #000; color: #fff"
+        >Dining Tables</a
+      >
+      <a
+        href="/alldata?category=servings&subcategory=dining-table&childsubcategory=4seater"
+        class="beautiful-div"
+        >4-Seater</a
+      >
+      <a
+        href="/alldata?category=servings&subcategory=dining-table&childsubcategory=6seater"
+        class="beautiful-div"
+        >6-Seater</a
+      >
+      <a
+        href="/alldata?category=servings&subcategory=dining-table&childsubcategory=8seater"
+        class="beautiful-div"
+        >8-Seater</a
+      >
+     
+    </div>
+    <div id="kidsAccessoryContent" style="display: none">
+      <button
+        id="closeKidsAccessoryContent"
+        style="background-color: transparent; color: #fff; border: none"
+      >
+        <span class="material-symbols-outlined">arrow_back_ios</span>
+      </button>
+      <a
+        href="/alldata?category=servings&subcategory=guest-table"
+        class="beautiful-div"
+        style="background-color: #000; color: #fff"
+        >Guest Tables</a
+      >
+      <a
+        href="/alldata?category=servings&subcategory=guest-table&childsubcategory=center"
+        class="beautiful-div"
+        >Center Tables</a
+      >
+      <a
+        href="/alldata?category=servings&subcategory=guest-table&childsubcategory=corner"
+        class="beautiful-div"
+        >Corner Tables</a
+      >
+      
+    </div>
+    <div id="kidsClothesContent" style="display: none">
+      <button
+        id="closeKidsClothesContent"
+        style="background-color: transparent; color: #fff; border: none"
+      >
+        <span class="material-symbols-outlined">arrow_back_ios</span>
+      </button>
+      <a
+        href="/alldata?category=sofa&subcategory=accessories"
+        class="beautiful-div"
+        style="background-color: #000; color: #fff"
+        >Sofa Accessories</a
+      >
+      <a
+        href="/alldata?category=sofa&subcategory=accessories&childsubcategory=cushions"
+        class="beautiful-div"
+        >Cushions</a
+      >
+      <a
+        href="/alldata?category=sofa&subcategory=accessories&childsubcategory=covers"
+        class="beautiful-div"
+        >Sofa Covers</a
+      >
+      <a
+        href="/alldata?category=sofa&subcategory=accessories&childsubcategory=throws"
+        class="beautiful-div"
+        >Throws & Blankets</a
+      >
+     
+    </div>
+
+    <!-- scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script src="/js/mobilenav.js"></script>
+  </body>
+</html>
